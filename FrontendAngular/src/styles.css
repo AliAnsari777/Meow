@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+
+*{
+    font-family: 'Indie Flower', cursive;
+font-family: 'Barlow Condensed', sans-serif;
+}
+
+/* .mat-form-field-infix{
+    border-top: 0.1em !important;
+} */

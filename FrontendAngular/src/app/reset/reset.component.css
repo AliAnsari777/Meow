@@ -1,0 +1,59 @@
+.reset-card {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0px 5px 5px -1px rgba(3, 218, 198, 1),
+     0px 3px 3px 0px rgba(65, 29, 29, 0.3),
+      0px 3px 3px 0px rgba(0, 0, 0, 0.3) !important;
+background-color: lightgoldenrodyellow;
+  }
+  
+  .reset-header-image {
+    background-image: url('../../assets//images/featured-pet.png');
+    background-size: cover;
+    width: 130px;
+    height: 100px;
+  }
+  
+  .reset-title {
+    font-size: 40px;
+  }
+  
+  .reset-content {
+    font-size: 24px;
+  }
+  
+  .reset-actions {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .reset-full-width {
+    width: 100%;
+  }
+  
+  
+  
+  .sign-in {
+    color: #ffffff;
+    font-size: 24px;
+    background-color: #6200ee;
+    width: 70px !important;
+    height: 70px !important;
+  }
+  
+  .create-account {
+    color: #6200ee;
+    font-size: 24px;
+  }
+  
+  .reset-password {
+    color: #ffffff;
+    font-size: 24px;
+    background-color: #6200ee;
+    width: 70px !important;
+    height: 70px !important;
+  }
+  
+
+  
