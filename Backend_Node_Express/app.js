@@ -23,8 +23,9 @@ app.use('/', indexRouter);
 
 app.use('/users', usersRouter);
 
-app.use('/signup', usersRouter);
-app.use('/login', usersRouter);
+//Update by Abdulrhman 15-03-2020
+// app.use('/signup', usersRouter);
+// app.use('/login', usersRouter);
 
 
 
