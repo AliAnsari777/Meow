@@ -28,6 +28,7 @@ import { RegisterComponent } from './register/register.component';
 import { ServicesComponent } from './services/services.component';
 import { ResetComponent } from './reset/reset.component';
 
+import { HttpClientModule } from '@angular/common/http'; 
 
 
 
@@ -58,7 +59,8 @@ import { ResetComponent } from './reset/reset.component';
     MatDividerModule,
     MatSlideToggleModule,
     MatSelectModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
