@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const nodeoutlook = require('nodejs-nodemailer-outlook');
+const path = require('path');
+
 var generator = require('generate-password');
 
 const databaseConnection = require('../database/databaseConnection');
@@ -18,7 +20,6 @@ module.exports.getAll = async function(req, res) {
             })
         }
     })
-
 }
 
 //used >> npm i jsonwebtoken
@@ -28,8 +29,6 @@ module.exports.login = async function(req, res) {
     userModel.findOne({
         email: email
     }, (err, userdoc) => {
-
-
         if (userdoc) {
             bcrypt.compare(password, userdoc.password).then(function(result) {
                 if (result) {
@@ -46,12 +45,7 @@ module.exports.login = async function(req, res) {
         } else {
             res.sendStatus(401);
         }
-
-
-
     })
-
-
 }
 
 //used >> npm i bcrypt
@@ -62,11 +56,14 @@ module.exports.signup = async function(req, res) {
         bcrypt.hash(password, salt, function(err, hash) {
             req.body.password = hash;
             req.body.email = req.body.email.toLowerCase();
-            req.body["userPhoto"] = req.file.path;
+            req.body.userPhoto = path.join('assets', 'usersPhoto', 'default.jpg')
             let doc = new userModel(req.body);
-            doc.save();
-            res.json({
-                result: 'Sign up Success'
+            doc.save((err, doc) => {
+                if (err) throw err;
+
+                res.json({
+                    result: 'Sign up Success'
+                });
             });
         });
     });
@@ -119,32 +116,49 @@ module.exports.resetPassword = async function(req, res) {
             res.sendStatus(401);
         }
     });
-
 }
 
 //for adding new pet to users document into his pets array
 module.exports.addPet = async function(req, res) {
-    const pet = req.body;
+    req.body.photo = req.file.path;
     const userEmail = req.params.email.toLowerCase();
-    // this is for finding user by then add the pet by using mongoose (findOneAndUpdate) function
 
-    userModel.findOneAndUpdate({ email: userEmail }, { $push: { pets: pet } }, (err, result) => {
+    // this is for finding user by then add the pet by using mongoose (findOneAndUpdate) function
+    userModel.findOneAndUpdate({ email: userEmail }, { $push: { pets: req.body } }, (err, result) => {
         if (err) throw err;
 
         res.json(result);
     })
 }
 
+
 module.exports.updateProfile = async function(req, res) {
     const newInfo = req.body;
     userEmail = req.params.email.toLowerCase();
-    userModel.findOneAndUpdate({ email: userEmail }, { $set: { name: newInfo.name, email: newInfo.email.toLowerCase(), phone: newInfo.phone } },
-        (err, result) => {
-            if (err) throw err;
 
-            res.json(result);
-        }
-    )
+    if (newInfo.userPhoto == null) {
+        userModel.findOneAndUpdate({ email: userEmail }, { $set: { name: newInfo.name, email: newInfo.email.toLowerCase(), phone: newInfo.phone } },
+            (err, result) => {
+                if (err) throw err;
+
+                res.json(result);
+            }
+        )
+    } else {
+        userModel.findOneAndUpdate({ email: userEmail }, {
+                $set: {
+                    name: newInfo.name,
+                    email: newInfo.email.toLowerCase(),
+                    phone: newInfo.phone,
+                    userPhoto: newInfo.userPhoto
+                }
+            },
+            (err, result) => {
+                if (err) throw err;
+
+                res.json(result);
+            })
+    }
 }
 
 module.exports.findUserByEmail = async function(req, res) {

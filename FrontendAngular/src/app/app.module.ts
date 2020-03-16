@@ -20,7 +20,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -28,7 +27,8 @@ import { RegisterComponent } from './register/register.component';
 import { ServicesComponent } from './services/services.component';
 import { ResetComponent } from './reset/reset.component';
 
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
+import { AddPetComponent } from './add-pet/add-pet.component'; 
 
 
 
@@ -38,7 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     RegisterComponent,
     ServicesComponent,
-    ResetComponent
+    ResetComponent,
+    AddPetComponent
   ],
   imports: [
     BrowserModule,

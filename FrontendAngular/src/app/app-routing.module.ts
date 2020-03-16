@@ -5,13 +5,14 @@ import { RegisterComponent } from './register/register.component';
 import { ServicesComponent } from './services/services.component';
 import { LoginComponent } from './login/login.component';
 import { ResetComponent } from './reset/reset.component';
-
+import { AddPetComponent } from './add-pet/add-pet.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'services', component: ServicesComponent },
   { path: 'login', component: LoginComponent },
-  {path:'reset',component:ResetComponent}
+  { path: 'reset', component:ResetComponent},
+  { path: 'addPet', component:AddPetComponent}
 ];
 
 @NgModule({
