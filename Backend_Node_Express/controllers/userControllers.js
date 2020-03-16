@@ -29,14 +29,15 @@ module.exports.login = async function(req, res) {
         email: email
     }, (err, userdoc) => {
 
-
         if (userdoc) {
             bcrypt.compare(password, userdoc.password).then(function(result) {
                 if (result) {
                     jwt.sign({ user: userdoc }, 'secretkey', { expiresIn: '50s' }, (err, token) => {
                         res.json({
+                            name: userdoc.name,
                             email: userdoc.email,
-                            token: token
+                            token: token,
+                            expiresIn: 50
                         })
                     });
                 } else {

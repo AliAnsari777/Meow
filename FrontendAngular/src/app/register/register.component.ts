@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../services/data.service';
+import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { Observable } from "rxjs";
 import {FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
   });
   
 
-  constructor(private dataService: DataService,private router:Router,private formBuilder: FormBuilder) {
+  constructor(private dataService: UserService,private router:Router,private formBuilder: FormBuilder) {
    
    }
 
@@ -42,8 +42,6 @@ export class RegisterComponent implements OnInit {
   createAccount(){
   this.dataService.createUser(this.registerForm.value)
   .subscribe((data: {}) => {
-    alert('User Created, Thanks');
-    
   })
 }
 }

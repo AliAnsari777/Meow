@@ -28,7 +28,8 @@ import { RegisterComponent } from './register/register.component';
 import { ServicesComponent } from './services/services.component';
 import { ResetComponent } from './reset/reset.component';
 
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
+import { MyPostsComponent } from './my-posts/my-posts.component'; 
 
 
 
@@ -38,7 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     RegisterComponent,
     ServicesComponent,
-    ResetComponent
+    ResetComponent,
+    MyPostsComponent
   ],
   imports: [
     BrowserModule,
