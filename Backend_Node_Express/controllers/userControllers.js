@@ -5,13 +5,10 @@ var generator = require('generate-password');
 
 const databaseConnection = require('../database/databaseConnection');
 const userModel = require('../database/userModel');
-const postModel = require('../database/postModel');
 
 databaseConnection.connect();
 
 module.exports.getAll = async function(req, res) {
-
-
     jwt.verify(req.token, 'secretkey', (err, authData) => {
         if (err) {
             res.sendStatus(403);
@@ -64,6 +61,8 @@ module.exports.signup = async function(req, res) {
     bcrypt.genSalt(saltRounds, function(err, salt) {
         bcrypt.hash(password, salt, function(err, hash) {
             req.body.password = hash;
+            req.body.email = req.body.email.toLowerCase();
+            req.body["userPhoto"] = req.file.path;
             let doc = new userModel(req.body);
             doc.save();
             res.json({
@@ -71,7 +70,6 @@ module.exports.signup = async function(req, res) {
             });
         });
     });
-
 }
 
 //used >> npm i nodejs-nodemailer-outlook & npm i generate-password
@@ -109,7 +107,6 @@ module.exports.resetPassword = async function(req, res) {
                         html: `<b>Your Password is: ${newPassword}</b>`,
 
 
-
                         onError: (e) => {
                             console.log(e);
                             res.sendStatus(500)
@@ -118,14 +115,43 @@ module.exports.resetPassword = async function(req, res) {
                     });
                 });
             });
-
-
-
         } else {
             res.sendStatus(401);
         }
     });
 
+}
 
+//for adding new pet to users document into his pets array
+module.exports.addPet = async function(req, res) {
+    const pet = req.body;
+    const userEmail = req.params.email.toLowerCase();
+    // this is for finding user by then add the pet by using mongoose (findOneAndUpdate) function
 
+    userModel.findOneAndUpdate({ email: userEmail }, { $push: { pets: pet } }, (err, result) => {
+        if (err) throw err;
+
+        res.json(result);
+    })
+}
+
+module.exports.updateProfile = async function(req, res) {
+    const newInfo = req.body;
+    userEmail = req.params.email.toLowerCase();
+    userModel.findOneAndUpdate({ email: userEmail }, { $set: { name: newInfo.name, email: newInfo.email.toLowerCase(), phone: newInfo.phone } },
+        (err, result) => {
+            if (err) throw err;
+
+            res.json(result);
+        }
+    )
+}
+
+module.exports.findUserByEmail = async function(req, res) {
+    userEmail = req.params.email.toLowerCase();
+    userModel.findOne({ email: userEmail }, (err, result) => {
+        if (err) throw err;
+
+        res.json(result);
+    })
 }

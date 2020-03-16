@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 const controller = require('../controllers/userControllers');
-const {verifyToken} = require('../middleware/verifyToken')
-
+const { verifyToken } = require('../middleware/verifyToken');
+const { uploadPhoto } = require('../middleware/savePhoto');
 
 
 /* GET users listing. */
@@ -12,13 +12,12 @@ const {verifyToken} = require('../middleware/verifyToken')
 // router.get('/', function(req, res, next) {
 //     res.send('respond with a resource');
 // });
-router.get('/getAll',verifyToken, controller.getAll);
+router.get('/getAll', verifyToken, controller.getAll);
 router.get('/login', controller.login);
-router.get('/resetPassword',controller.resetPassword);
-router.post('/', controller.signup);
-
-// this is for login path
-// router.post('/', controller.login)
-
+router.get('/resetPassword', controller.resetPassword);
+router.post('/', uploadPhoto.single('photo'), controller.signup);
+router.post('/addPet/:email', controller.addPet);
+router.put('/editProfile/:email', controller.updateProfile);
+router.get('/:email', controller.findUserByEmail);
 
 module.exports = router;
