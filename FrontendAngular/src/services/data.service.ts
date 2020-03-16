@@ -8,6 +8,7 @@ import { post } from '../module/post';
 @Injectable({
   providedIn: 'root'
 })
+
 export class DataService {
   apiUrl = "http://localhost:3000";
   httpOptions = {
@@ -19,8 +20,6 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   createUser(user): Observable<user>{
-    console.log(user);
-    
     return this.http.post<user>(this.apiUrl+"/users",JSON.stringify(user),this.httpOptions);
  }
   getPostsByEmail(email){
