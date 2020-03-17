@@ -6,6 +6,7 @@ let postSchema = new mongoose.Schema({
     postDate: Date,
     status: { type: Boolean, required: true },
     postType: { type: String, required: true },
+    petName: String,
     petType: String,
     photo: String,
     gender: String,
