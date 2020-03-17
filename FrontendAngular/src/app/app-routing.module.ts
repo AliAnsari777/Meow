@@ -5,21 +5,21 @@ import { RegisterComponent } from './register/register.component';
 import { ServicesComponent } from './services/services.component';
 import { LoginComponent } from './login/login.component';
 import { ResetComponent } from './reset/reset.component';
+
+import { AddPetComponent } from './add-pet/add-pet.component';
+import { AddpostComponent } from './addpost/addpost.component'
 import { AppComponent } from './app.component';
 
 
+
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   component: AppComponent,
-  //   children: [
-  //     { path: 'register', component: RegisterComponent },
-  //     { path: 'services', component: ServicesComponent },
-      
-  //     {path:'reset',component:ResetComponent}
-  //   ]
-  // },
-  { path: '', component: LoginComponent }
+  { path: 'register', component: RegisterComponent },
+  { path: 'services', component: ServicesComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'reset', component:ResetComponent},
+  { path: 'addPet', component:AddPetComponent},
+  { path: 'posts', component: AddpostComponent }
+
 ];
 
 @NgModule({
