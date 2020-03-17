@@ -5,73 +5,46 @@
         <mat-card-subtitle class="register-content">Add new pet</mat-card-subtitle>
     </mat-card-header>
     <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
-    <form class="register-form" [formGroup]="registerForm" (ngSubmit)="addNewPet()">
+    <form class="register-form" [formGroup]="registerForm">
         <mat-card-content class="register-content">
 
             <mat-form-field class="register-full-width">
                 <mat-label>Name</mat-label>
                 <input matInput placeholder="Name" formControlName="name" required>
-                <!-- <mat-error *ngIf="name.hasError('required')">
-                    Name is <strong>required</strong>
-                  </mat-error> -->
             </mat-form-field>
 
 
             <mat-form-field class="register-full-width">
                 <mat-label>Gender</mat-label>
-                <select matNativeControl formControlName="gender" required>
-                    <option label="Gender"></option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                </select>
-                <!-- [errorStateMatcher]="matcher" -->
-                <!-- <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
-                Please enter a valid email address
-              </mat-error>
-              <mat-error *ngIf="email.hasError('required')">
-                Email is <strong>required</strong>
-              </mat-error> -->
+                <mat-select formControlName="gender" required>
+                    <mat-option *ngFor="let gen of gender" [value]="gen.value">
+                        {{gen.viewValue}}
+                    </mat-option>
+                </mat-select>
             </mat-form-field>
 
             <mat-form-field class="register-full-width">
                 <mat-label>Age</mat-label>
                 <input matInput placeholder="Age" formControlName="age" required>
-                <!-- <mat-error *ngIf="phone.hasError('required')">
-                    Phone is <strong>required</strong>
-                  </mat-error> -->
             </mat-form-field>
 
             <mat-form-field class="register-full-width">
                 <mat-label>Animal Type</mat-label>
-                <select matNativeControl formControlName="animalType" required>
-                    <option label="Animal Type"></option>
-                    <option value="cat">Cat</option>
-                    <option value="dog">Dog</option>
-                    <option value="rabbit">Rabbit</option>
-                    <option value="bird">Bird</option>
-                    <option value="fish">Fish</option>
-                </select>
-                <!-- <mat-error *ngIf="password.hasError('required')">
-                    Password is <strong>required</strong>
-                  </mat-error> -->
+                <mat-select formControlName="animalType" required>
+                    <mat-option *ngFor="let animal of animals" [value]="animal.value">
+                        {{animal.viewValue}}
+                    </mat-option>
+                </mat-select>
             </mat-form-field>
 
-
-            <mat-form-field class="register-full-width">
-                <mat-label>Upload Photo</mat-label>
-                <input matInput type="file" formControlName="photo" multiple />
-
-                <!-- <label for="input-file-id" class="md-button md-raised md-primary">Choose Files</label> -->
-
-                <!-- <mat-error *ngIf="phone.hasError('required')">
-                    Phone is <strong>required</strong>
-                  </mat-error> -->
-            </mat-form-field>
+            <input #file type="file" [hidden]="true" (change)="onFileChanged($event)" accept="image/*">
+            <!-- formControlName="photo" -->
+            <button mat-raised-button color="primary" (click)="file.click()">Upload file</button>
 
         </mat-card-content>
 
         <mat-card-actions class="register-actions">
-            <button mat-button class="sign-in" type="submit" [disabled]="!registerForm.valid">Add Pet</button>
+            <button mat-button class="sign-in" type="submit" [disabled]="!registerForm.valid" (click)="addNewPet()">Add Pet</button>
         </mat-card-actions>
     </form>
 </mat-card>

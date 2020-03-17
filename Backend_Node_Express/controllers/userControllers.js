@@ -34,8 +34,10 @@ module.exports.login = async function(req, res) {
                 if (result) {
                     jwt.sign({ user: userdoc }, 'secretkey', { expiresIn: '50s' }, (err, token) => {
                         res.json({
+                            name: userdoc.name,
                             email: userdoc.email,
-                            token: token
+                            token: token,
+                            expiresIn: 50
                         })
                     });
                 } else {
@@ -120,15 +122,25 @@ module.exports.resetPassword = async function(req, res) {
 
 //for adding new pet to users document into his pets array
 module.exports.addPet = async function(req, res) {
-    req.body.photo = req.file.path;
+    console.log("2.user controller");
+
+    if (req.file != null)
+        req.body.photo = req.file.path;
     const userEmail = req.params.email.toLowerCase();
 
-    // this is for finding user by then add the pet by using mongoose (findOneAndUpdate) function
-    userModel.findOneAndUpdate({ email: userEmail }, { $push: { pets: req.body } }, (err, result) => {
+
+    userModel.updateOne({ email: userEmail }, { $push: { pets: req.body } }, (err, result) => {
         if (err) throw err;
 
         res.json(result);
     })
+
+    // because this method has some depricated warning I change findOneAndUpdate to updateOne
+    // userModel.findOneAndUpdate({ email: userEmail }, { $push: { pets: req.body } }, (err, result) => {
+    //     if (err) throw err;
+
+    //     res.json(result);
+    // })
 }
 
 
@@ -137,15 +149,22 @@ module.exports.updateProfile = async function(req, res) {
     userEmail = req.params.email.toLowerCase();
 
     if (newInfo.userPhoto == null) {
-        userModel.findOneAndUpdate({ email: userEmail }, { $set: { name: newInfo.name, email: newInfo.email.toLowerCase(), phone: newInfo.phone } },
+        userModel.updateOne({ email: userEmail }, { $set: { name: newInfo.name, email: newInfo.email.toLowerCase(), phone: newInfo.phone } },
             (err, result) => {
                 if (err) throw err;
 
                 res.json(result);
-            }
-        )
+            })
+
+        // userModel.findOneAndUpdate({ email: userEmail }, { $set: { name: newInfo.name, email: newInfo.email.toLowerCase(), phone: newInfo.phone } },
+        //     (err, result) => {
+        //         if (err) throw err;
+
+        //         res.json(result);
+        //     }
+        // )
     } else {
-        userModel.findOneAndUpdate({ email: userEmail }, {
+        userModel.updateOne({ email: userEmail }, {
                 $set: {
                     name: newInfo.name,
                     email: newInfo.email.toLowerCase(),
@@ -158,6 +177,20 @@ module.exports.updateProfile = async function(req, res) {
 
                 res.json(result);
             })
+
+        // userModel.findOneAndUpdate({ email: userEmail }, {
+        //         $set: {
+        //             name: newInfo.name,
+        //             email: newInfo.email.toLowerCase(),
+        //             phone: newInfo.phone,
+        //             userPhoto: newInfo.userPhoto
+        //         }
+        //     },
+        //     (err, result) => {
+        //         if (err) throw err;
+
+        //         res.json(result);
+        //     })
     }
 }
 

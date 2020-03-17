@@ -28,7 +28,10 @@ import { ServicesComponent } from './services/services.component';
 import { ResetComponent } from './reset/reset.component';
 
 import { HttpClientModule } from '@angular/common/http';
+
 import { AddPetComponent } from './add-pet/add-pet.component'; 
+import { MyPostsComponent } from './my-posts/my-posts.component'; 
+import { from } from 'rxjs';
 
 
 
@@ -39,7 +42,8 @@ import { AddPetComponent } from './add-pet/add-pet.component';
     RegisterComponent,
     ServicesComponent,
     ResetComponent,
-    AddPetComponent
+    AddPetComponent,
+    MyPostsComponent
   ],
   imports: [
     BrowserModule,

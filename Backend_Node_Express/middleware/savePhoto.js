@@ -4,6 +4,7 @@ let address;
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
         let path = "";
+        console.log("1. save file");
 
         if (req.params.des == 1)
             path = "usersPhoto"

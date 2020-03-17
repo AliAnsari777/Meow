@@ -10,8 +10,6 @@
 # dependencies
 /node_modules
 
-#photo folders
-/assets
 
 # profiling files
 chrome-profiler-events*.json
