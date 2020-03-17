@@ -3,7 +3,15 @@ let address;
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, './assets/usersPhoto');
+        let path = "";
+        console.log("1. save file");
+
+        if (req.params.des == 1)
+            path = "usersPhoto"
+        else
+            path = "petsPhoto";
+
+        cb(null, './assets/' + path);
     },
     filename: function(req, file, cb) {
         address = 'profilePhoto-' + Date.now() + '.' + file.originalname;

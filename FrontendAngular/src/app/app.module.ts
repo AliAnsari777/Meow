@@ -6,6 +6,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 //import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
+
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
@@ -18,6 +19,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
+
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+
+
 import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
@@ -29,7 +35,9 @@ import { ServicesComponent } from './services/services.component';
 import { ResetComponent } from './reset/reset.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { MyPostsComponent } from './my-posts/my-posts.component';
+
+import { AddPetComponent } from './add-pet/add-pet.component'; 
+import { MyPostsComponent } from './my-posts/my-posts.component'; 
 import { AddpostComponent } from './addpost/addpost.component';
 
 import {MatRadioModule} from '@angular/material/radio';
@@ -45,6 +53,7 @@ import { ViewpostsComponent } from './viewposts/viewposts.component';
     RegisterComponent,
     ServicesComponent,
     ResetComponent,
+    AddPetComponent,
     MyPostsComponent,
     AddpostComponent,
     ViewpostsComponent
@@ -72,6 +81,8 @@ import { ViewpostsComponent } from './viewposts/viewposts.component';
     MatSelectModule,
     MatProgressSpinnerModule,
     HttpClientModule,
+    MatSidenavModule,
+    MatListModule,
     MatDatepickerModule,
     MatRadioModule,
     MatNativeDateModule,

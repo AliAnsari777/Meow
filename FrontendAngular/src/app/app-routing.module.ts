@@ -5,9 +5,10 @@ import { RegisterComponent } from './register/register.component';
 import { ServicesComponent } from './services/services.component';
 import { LoginComponent } from './login/login.component';
 import { ResetComponent } from './reset/reset.component';
+import { AddPetComponent } from './add-pet/add-pet.component';
 import { AddpostComponent } from './addpost/addpost.component'
 import { ViewpostsComponent } from './viewposts/viewposts.component'
-
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -17,7 +18,10 @@ const routes: Routes = [
 
   //AYA
   { path: 'addpost', component: AddpostComponent },
-  { path: 'viewpost', component: ViewpostsComponent }
+  { path: 'viewpost', component: ViewpostsComponent },
+  { path: 'addPet', component:AddPetComponent},
+  { path: 'posts', component: AddpostComponent }
+
 ];
 
 @NgModule({

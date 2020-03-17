@@ -8,6 +8,6 @@ export class user {
         gender: String,
         age: Number,
         animalType: String,
-        photo: String
+        photo: File
     }]
 }
