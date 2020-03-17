@@ -15,7 +15,7 @@ router.get('/', function (req, res, next) {
 router.get('/:postType', postController.getAllPosts); //get all posts
 router.delete('/:id', postController.deletePost); //delete spacific one
 router.post('/', postController.addPost); //add new post
-router.get('/:email', postController.getPostsByUserID); //get posts for spacific user
+router.get('/:email', postController.getPostsByUserEmail); //get posts for spacific user
 ////////////////////////////////////////////////
 
 module.exports = router;

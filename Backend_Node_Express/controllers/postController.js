@@ -27,7 +27,7 @@ module.exports.addPost = async function (req, res) {
 }
 
 //get posts for each user
-module.exports.getPostsByUserID = async function (req, res) {
+module.exports.getPostsByUserEmail = async function (req, res) {
     postModel.find({ email: req.params.email }, function (err, postDoc) {
         console.log(postDoc);
         res.json(postDoc);

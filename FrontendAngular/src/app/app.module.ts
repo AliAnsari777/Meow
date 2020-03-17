@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 //import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -18,7 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,8 +31,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AddPetComponent } from './add-pet/add-pet.component'; 
 import { MyPostsComponent } from './my-posts/my-posts.component'; 
-import { from } from 'rxjs';
+import { AddpostComponent } from './addpost/addpost.component';
 
+import {MatRadioModule} from '@angular/material/radio';
+import {MatNativeDateModule} from '@angular/material/core'
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ViewpostsComponent } from './viewposts/viewposts.component';
 
 
 @NgModule({
@@ -43,7 +47,11 @@ import { from } from 'rxjs';
     ServicesComponent,
     ResetComponent,
     AddPetComponent,
-    MyPostsComponent
+    MyPostsComponent,
+    AddpostComponent,
+    ViewpostsComponent
+    
+    
   ],
   imports: [
     BrowserModule,
@@ -65,7 +73,12 @@ import { from } from 'rxjs';
     MatSlideToggleModule,
     MatSelectModule,
     MatProgressSpinnerModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDatepickerModule,
+    MatRadioModule,
+    MatNativeDateModule,
+    MatSnackBarModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,106 @@
+<mat-card class="add-post-card">
+    <mat-card-header>
+        <div mat-card-avatar class="add_post-header-image"></div>
+        <mat-card-title class="add-post-title">Add New Post</mat-card-title>
+        <mat-card-subtitle class="register-content">Add Post</mat-card-subtitle>
+    </mat-card-header>
+
+    <form class="add-post-form" [formGroup]="addPostForm" (ngSubmit)="addNewPost()">
+        <mat-card-content class="add-post-content">
+
+            <mat-form-field class="add-post-full-width">
+                <mat-label>Description</mat-label>
+                <input matInput placeholder="description" formControlName="text" required>
+            </mat-form-field>
+
+
+            <table class="add-post-full-width" cellspacing="0">
+                <tr>
+                    <td>
+                        <mat-form-field class="add-post-full-width">
+                            <mat-label>Date</mat-label>
+                            <input matInput [matDatepicker]="picker1" formControlName="date">
+                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                            <mat-datepicker #picker1></mat-datepicker>
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>
+
+            <table class="add-post-full-width" cellspacing="0">
+                <tr>
+                    <td>
+                        <mat-form-field class="add-post-full-width">
+                            <mat-label>Sitting Start Date</mat-label>
+                            <input matInput [matDatepicker]="picker2" formControlName="startSittingDate">
+                            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                            <mat-datepicker #picker2></mat-datepicker>
+                        </mat-form-field>
+                    </td>
+
+                    <mat-form-field class="add-post-full-width">
+                        <mat-label>Sitting End Date</mat-label>
+                        <input matInput [matDatepicker]="picker3" formControlName="endSittingDate">
+                        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                        <mat-datepicker #picker3></mat-datepicker>
+                    </mat-form-field>
+
+                </tr>
+            </table>
+
+            <mat-form-field class="add-post-full-width">
+                <mat-label>Post Type</mat-label>
+                <mat-select formControlName="postType">
+                    <mat-option *ngFor="let type of postType" [value]="type.value">
+                        {{type.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-radio-group ria-labelledby="Select a gender" formControlName="gender">
+                <mat-label>Gender</mat-label>
+                <mat-radio-button value="1">Female</mat-radio-button>
+                <mat-radio-button value="2">Male</mat-radio-button>
+            </mat-radio-group>
+
+
+            <mat-form-field class="add-post-full-width">
+                <mat-label>Age</mat-label>
+                <input matInput type="number" placeholder="age" formControlName="age">
+            </mat-form-field>
+
+            <mat-form-field class="add-post-full-width">
+                <mat-label>Address</mat-label>
+                <textarea matInput placeholder="Ex. 100 Main St">Fairfiled</textarea>
+            </mat-form-field>
+
+            <table class="add-post-full-width" cellspacing="0">
+                <tr>
+                    <td>
+                        <mat-form-field class="add-post-full-width">
+                            <mat-label>City</mat-label>
+                            <input matInput placeholder="Ex. San Francisco" formControlName="city">
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field class="add-post-full-width">
+                            <mat-label>State</mat-label>
+                            <input matInput placeholder="Ex. California" formControlName="state">
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field class="add-post-full-width">
+                            <mat-label>Postal Code</mat-label>
+                            <input matInput #postalCode maxlength="5" placeholder="Ex. 94105" formControlName="zipCode">
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>
+
+        </mat-card-content>
+        <mat-card-actions class="add-post-actions">
+            <button mat-raised-button color="accent" type="submit" [disabled]="!addPostForm.valid">Add Post</button>
+        </mat-card-actions>
+    </form>
+
+</mat-card>
