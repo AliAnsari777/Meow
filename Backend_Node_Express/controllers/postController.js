@@ -13,7 +13,8 @@ module.exports.getAllPosts = async function (req, res) {
 
 //delete post by ID
 module.exports.deletePost = async function (req, res) {
-    postModel.deleteOne({ id: req.params.id }, function (err,postDoc) {
+    
+    postModel.deleteOne({ _id: req.params.id }, function (err,postDoc) {
         if (err) return handleError(err);
         res.json(postDoc);
     });

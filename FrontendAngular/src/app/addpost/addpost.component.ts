@@ -2,11 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/post.service';
 import { Router } from '@angular/router';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
-import {
-  MatSnackBar,
-  MatSnackBarConfig,
-  MatSnackBarHorizontalPosition,
-  MatSnackBarVerticalPosition,
+import {MatSnackBar,MatSnackBarConfig,MatSnackBarHorizontalPosition,MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 
 interface PostType {
@@ -63,7 +59,7 @@ export class AddpostComponent implements OnInit {
       Validators.required
     ]),
     age: new FormControl('', [
-      Validators.required
+      
     ]),
     //address
     state: new FormControl('', [
@@ -77,6 +73,9 @@ export class AddpostComponent implements OnInit {
     ]),
     status: new FormControl('true', [
       Validators.required
+    ]),
+    petName: new FormControl('', [
+      
     ])
   })
 
@@ -85,14 +84,11 @@ export class AddpostComponent implements OnInit {
 
   addNewPost() {
     this.dataService.addPost(this.addPostForm.value)
-
       .subscribe((data: {}) => {
         console.log(data);
         this.openSnackBar();
-        this.router.navigateByUrl('/login');
-
+        this.router.navigateByUrl('login');
       })
-
   }
 
   openSnackBar() {
@@ -100,6 +96,6 @@ export class AddpostComponent implements OnInit {
     config.verticalPosition = this.verticalPosition;
     config.horizontalPosition = this.horizontalPosition;
     config.duration = this.setAutoHide ? this.autoHide : 0;
-    this._snackBar.open(this.message, this.action ? this.actionButtonLabel : undefined, config);
+    this._snackBar.open(this.message, this.action ? this.actionButtonLabel : undefined,config);
   }
 }

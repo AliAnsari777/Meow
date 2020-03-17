@@ -6,6 +6,7 @@ import { ServicesComponent } from './services/services.component';
 import { LoginComponent } from './login/login.component';
 import { ResetComponent } from './reset/reset.component';
 import { AddpostComponent } from './addpost/addpost.component'
+import { ViewpostsComponent } from './viewposts/viewposts.component'
 
 
 const routes: Routes = [
@@ -13,7 +14,10 @@ const routes: Routes = [
   { path: 'services', component: ServicesComponent },
   { path: 'login', component: LoginComponent },
   { path: 'reset', component: ResetComponent },
-  { path: 'posts', component: AddpostComponent }
+
+  //AYA
+  { path: 'addpost', component: AddpostComponent },
+  { path: 'viewpost', component: ViewpostsComponent }
 ];
 
 @NgModule({
