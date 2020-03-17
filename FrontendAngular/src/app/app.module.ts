@@ -44,6 +44,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatNativeDateModule} from '@angular/material/core'
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ViewpostsComponent } from './viewposts/viewposts.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { ViewpostsComponent } from './viewposts/viewposts.component';
     AddPetComponent,
     MyPostsComponent,
     AddpostComponent,
-    ViewpostsComponent
+    ViewpostsComponent,
+    HomeComponent
     
     
   ],
