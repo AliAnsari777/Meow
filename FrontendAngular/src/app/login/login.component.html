@@ -5,38 +5,38 @@
       <mat-card-subtitle class="login-content">Sign in</mat-card-subtitle>
     </mat-card-header>
     <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
-    <mat-card-content class="login-content">
-        <form class="login-form">
+   
+        <form class="login-form"  [formGroup]="loginForm" (ngSubmit)="signIn()">
+          <mat-card-content class="login-content">
             <mat-form-field class="login-full-width">
               <mat-label>Email</mat-label>
-              <input matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
-                     placeholder="Ex. pat@example.com">
-             
-              <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+              <input matInput  formControlName="email" 
+                     placeholder="Ex. pat@example.com" required>
+                
+              <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
                 Please enter a valid email address
               </mat-error>
               <mat-error *ngIf="emailFormControl.hasError('required')">
                 Email is <strong>required</strong>
-              </mat-error>
+              </mat-error> -->
             </mat-form-field>
 
             <mat-form-field class="login-full-width">
               <mat-label>Password</mat-label>
-              <input  matInput  placeholder="Password"  [formControl]="passwordFormControl" required>
-              <mat-error *ngIf="passwordFormControl.hasError('required')">
-                  Password is <strong>required</strong>
-                </mat-error>
+              <input  matInput  placeholder="Password"  formControlName="password" required>
+            
            </mat-form-field>
-          </form>
+          
     </mat-card-content>
     <mat-card-actions class="login-actions">
-      <button mat-button mat-fab class="sign-in" (click)="signIn()">Sign in</button>
+      <button mat-button mat-fab class="sign-in" type="submit" [disabled]="!loginForm.valid">Sign in</button>
       <button mat-button mat-fab class="reset-password" (click)="resetPassword()">Reset</button>
       
     </mat-card-actions>
     <mat-card-actions class="login-actions">
       <button mat-button  class="create-account" (click)="createAccount()">Create Account</button>
     </mat-card-actions>
+  </form>
   </mat-card>
 
   
