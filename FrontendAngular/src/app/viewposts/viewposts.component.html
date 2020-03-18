@@ -1,1 +1,23 @@
-<p>viewposts works!</p>
+<div fxLayout="row">
+    <div class="row" style="padding-left: 20px;">
+        <mat-card class="post-card col-md-2 addMargin" *ngFor="let post of posts">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title style="color: rgb(255,64,129);"> {{post.petName}}</mat-card-title>
+                <mat-card-subtitle style="color: rgb(255,64,129);"> {{post.gender}} </mat-card-subtitle>
+            </mat-card-header>
+            <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+            <mat-card-content>
+                <p style="color: rgb(255,64,129);">
+                    {{post.text}}
+
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="accent">Back</button>
+                <button mat-raised-button color="accent" (click)="deletePost(post._id)">Delete</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+
+</div>

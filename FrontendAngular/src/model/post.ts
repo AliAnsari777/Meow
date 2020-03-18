@@ -1,8 +1,10 @@
 export class post {
+    _id:string;
     text: String;
     postDate: Date;
     status:  Boolean;
     postType:  String;
+    petName: string;
     petType: String;
     photo: String;
     gender: String;
