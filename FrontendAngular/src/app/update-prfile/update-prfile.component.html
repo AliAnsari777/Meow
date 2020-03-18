@@ -24,7 +24,6 @@
             </mat-form-field>
 
             <input #file type="file" [hidden]="true" (change)="onFileChanged($event)" accept="image/*">
-            <!-- formControlName="photo" -->
             <button mat-raised-button color="primary" (click)="file.click()">Upload Photo</button>
 
         </mat-card-content>

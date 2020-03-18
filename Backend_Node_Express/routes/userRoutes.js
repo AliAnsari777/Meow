@@ -19,7 +19,7 @@ router.post('/', controller.signup);
 
 //ALI
 router.post('/addPet/:des/:email', uploadPhoto.single('photo'), controller.addPet);
-router.put('/editProfile/:des/:email', uploadPhoto.single('photo'), controller.updateProfile);
+router.put('/editProfile/:des/:email', uploadPhoto.single('userPhoto'), controller.updateProfile);
 router.get('/:email', controller.findUserByEmail);
 router.get('/findProfile/:email', controller.findUserProfile);
 

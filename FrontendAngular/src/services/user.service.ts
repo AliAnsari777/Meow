@@ -25,15 +25,13 @@ export class UserService {
   }
 
   // retrive email from local storage
-  email = "alex@mum.edu";
+  email = "ahmed@gmail.com";
 
   createUser(user): Observable<user> {
     return this.http.post<user>(this.apiUrl + "/", JSON.stringify(user), this.httpOptions)
   }
 
- addPet(pet): Observable<pet>{
-   console.log("2.this is service " + pet.name);
-   
+ addPet(pet): Observable<pet>{   
    return this.http.post<pet>(this.apiUrl+"/addPet/0/" + this.email, pet);
  }
 
@@ -41,13 +39,11 @@ export class UserService {
   return this.http.get<user>(this.apiUrl+ "/findProfile/" + email)
  }
 
- updateProfile(user): Observable<user>{
-   console.log("2.this is service ");
-  for (var pair of user.entries()) {
-    console.log(pair[0]+ ' - ' + pair[1]); 
-  }  
-   return this.http.put<user>(this.apiUrl + "/editProfile/1/" + this.email, user);
+ updateProfile(user): Observable<profile>{
+   return this.http.put<profile>(this.apiUrl + "/editProfile/1/" + this.email, user);
  }
+
+
   //AYA
   getPetsFromUserEmail() {
     let email = "/mohammadhanif@mum.edu";

@@ -83,7 +83,6 @@ export class AddPetComponent implements OnInit {
   ]
 
 
-  apiUrl = "http://localhost:3000/users";
   addNewPet(){
     var formData: any = new FormData();
     formData.append("name", this.registerForm.get('name').value);
