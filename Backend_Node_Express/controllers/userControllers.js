@@ -141,10 +141,8 @@ module.exports.addPet = async function(req, res) {
     // })
 }
 
-
 module.exports.updateProfile = async function(req, res) {
     console.log(req.body);
-
     const newInfo = req.body;
     userEmail = req.params.email.toLowerCase();
 
@@ -186,6 +184,19 @@ module.exports.findUserByEmail = async function(req, res) {
     })
 }
 
+//AYA
+module.exports.deletePet = async function(req, res) {
+    //  let email = "aya@gmail.com";
+    let petId = req.params.id;
+    userModel.updateOne({ "pets._id": petId }, {
+        $pull: { pets: { _id: petId } }
+    }, function(err, postDoc) {
+        if (err) return handleError(err);
+        res.json(postDoc);
+    })
+};
+
+//ALI
 module.exports.findUserProfile = async function(req, res) {
     userEmail = req.params.email.toLowerCase();
     userModel.findOne({ email: userEmail }, { pets: 0, password: 0 }, (err, result) => {

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable, of, throwError, from } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { user } from '../model/user';
-import { post } from '../model/post';
 import { pet } from '../model/pet';
 import { profile } from '../model/profile';
 import { EmailValidator } from '@angular/forms';
@@ -21,8 +20,8 @@ export class UserService {
       //'Authorization': 'passFromLocalStorage'
     })
   };
-  constructor(private http: HttpClient) { 
-   
+  constructor(private http: HttpClient) {
+
   }
 
   // retrive email from local storage
@@ -49,4 +48,16 @@ export class UserService {
   }  
    return this.http.put<user>(this.apiUrl + "/editProfile/1/" + this.email, user);
  }
+  //AYA
+  getPetsFromUserEmail() {
+    let email = "/mohammadhanif@mum.edu";
+    const headers = this.httpOptions.headers;
+    return this.http.get<user>(this.apiUrl + "/userpets" + email, { headers });
+  }
+
+  deletePet(petID) {
+    const headers = this.httpOptions.headers;
+    return this.http.delete(this.apiUrl + "/userpets/" + petID, { headers });
+
+  }
 }

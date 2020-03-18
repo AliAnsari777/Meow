@@ -1,0 +1,24 @@
+<div fxLayout="row">
+    <div class="row" style="padding-left: 40px;">
+        <mat-card class="pet-card col-md-2 addMargin" *ngFor ="let pet of user.pets">
+            <mat-card-header>
+                <div mat-card-avatar class="user-pet-header-image"></div>
+                <mat-card-title class="labelStyle"> {{pet.name}}</mat-card-title>
+                <mat-card-subtitle class="labelStyle"> {{pet.gender}} </mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content>
+                <p style="color: rgb(255,64,129);">
+
+                </p>
+            </mat-card-content>
+            <mat-card-actions class="centeralize">
+                <button mat-raised-button color="accent">Back</button>
+                <button mat-raised-button color="accent" (click)="deletePet(pet._id)">Delete</button>
+            </mat-card-actions>
+
+            <!-- https://fireship.io/lessons/sharing-data-between-angular-components-four-methods/ -->
+        </mat-card>
+    </div>
+
+</div>

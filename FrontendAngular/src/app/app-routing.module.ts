@@ -8,8 +8,10 @@ import { ResetComponent } from './reset/reset.component';
 import { AddPetComponent } from './add-pet/add-pet.component';
 import { AddpostComponent } from './addpost/addpost.component'
 import { ViewpostsComponent } from './viewposts/viewposts.component'
+import { UserpetsComponent } from './userpets/userpets.component'
 import { AppComponent } from './app.component';
 import { UpdatePrfileComponent } from './update-prfile/update-prfile.component';
+
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -22,7 +24,8 @@ const routes: Routes = [
   { path: 'viewpost', component: ViewpostsComponent },
   { path: 'addPet', component:AddPetComponent},
   { path: 'posts', component: AddpostComponent },
-  { path: 'updateProfile', component:UpdatePrfileComponent},
+  { path: 'userpets', component: UserpetsComponent },
+  { path: 'updateProfile', component:UpdatePrfileComponent}
 ];
 
 @NgModule({

@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>
+ 
+</h1>
+
+<div mat-dialog-content>
+    <p></p>
+</div>
+
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="isDeleted">Yes</button>
+</div>

@@ -16,10 +16,16 @@ router.get('/getAll', verifyToken, controller.getAll);
 router.get('/login', controller.login);
 router.get('/resetPassword', controller.resetPassword);
 router.post('/', controller.signup);
+
+//ALI
 router.post('/addPet/:des/:email', uploadPhoto.single('photo'), controller.addPet);
 router.put('/editProfile/:des/:email', uploadPhoto.single('photo'), controller.updateProfile);
 router.get('/:email', controller.findUserByEmail);
 router.get('/findProfile/:email', controller.findUserProfile);
 
+//AYA
+router.get('/:email', controller.findUserByEmail);
+router.get('/userpets/:email', controller.findUserByEmail);
+router.delete('/userpets/:id', controller.deletePet);
 
 module.exports = router;
