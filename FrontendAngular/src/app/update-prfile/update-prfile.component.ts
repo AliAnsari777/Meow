@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { user } from '../../model/user';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { FormGroup, FormBuilder} from '@angular/forms';
 
 
 @Component({
@@ -13,34 +11,29 @@ import { HttpClient } from '@angular/common/http';
 
 export class UpdatePrfileComponent implements OnInit {
   newForm: FormGroup;
-  useremail = "alex@mum.edu";
+  photo : File;
+  useremail = "ahmed@gmail.com";
 
-  constructor(private userService: UserService, private formBuilder: FormBuilder, private http: HttpClient) {
+  constructor(private userService: UserService, private formBuilder: FormBuilder) { 
     this.newForm = this.formBuilder.group({
-      name: new FormControl('', [
-        Validators.required
-      ]),
-      email: new FormControl('', [
-        Validators.required
-      ]),
-      phone: new FormControl('', [
-        Validators.required
-      ]),
+      name: [''],
+      email: [''],
+      phone: [''],
+      userPhoto:[null]
     })
-    this.newForm.controls['email'].disable()
+    this.newForm.controls['email'].disable();
   }
 
   ngOnInit() {
     this.userService.receiveUserProfile(this.useremail).subscribe(result => {
       this.newForm.patchValue({
-        name: result.name,
-        email: result.email,
-        phone: result.phone
-      });
+          name: result.name,
+          email: result.email,
+          phone: result.phone,
+          userPhoto: result.userPhoto
+        }); 
     })
   }
-
-  photo: File;
 
   onFileChanged(event) {
     this.photo = <File>event.target.files[0];
@@ -49,18 +42,11 @@ export class UpdatePrfileComponent implements OnInit {
 
   updateForm() {
     var formData: any = new FormData();
+    formData.append("userPhoto", this.photo);
     formData.append("name", this.newForm.get('name').value);
     formData.append("email", this.newForm.get('email').value);
     formData.append("phone", this.newForm.get('phone').value);
-    formData.append("userPhoto", this.photo);
-
-    for (var pair of formData.entries()) {
-      console.log(pair[0] + ' - ' + pair[1]);
-    }
-
-
-    console.log("1.this is controller" + this.newForm.get('name').value);
-
-    this.userService.updateProfile(formData).subscribe((data: {}) => { });
+      
+    this.userService.updateProfile(formData).subscribe((data : {}) => {});
   }
 }

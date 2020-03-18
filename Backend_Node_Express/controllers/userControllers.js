@@ -142,17 +142,10 @@ module.exports.addPet = async function(req, res) {
 }
 
 module.exports.updateProfile = async function(req, res) {
-    console.log(req.body);
     const newInfo = req.body;
     userEmail = req.params.email.toLowerCase();
 
-    console.log("3.update profile server:");
-    console.log(req.body.name);
-    console.log(req.body.phone);
-
-
-
-    if (newInfo.userPhoto == undefined) {
+    if (req.file == undefined) {
         userModel.updateOne({ email: userEmail }, { $set: { name: newInfo.name, phone: newInfo.phone } },
             (err, result) => {
                 if (err) throw err;
@@ -164,7 +157,7 @@ module.exports.updateProfile = async function(req, res) {
                 $set: {
                     name: newInfo.name,
                     phone: newInfo.phone,
-                    userPhoto: newInfo.userPhoto
+                    userPhoto: req.file.path
                 }
             },
             (err, result) => {
