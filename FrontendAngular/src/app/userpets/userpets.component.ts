@@ -6,8 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmMessageDialogComponent } from '../confirm-message-dialog/confirm-message-dialog.component'
 
 export interface DialogData {
-  animal: string;
-  name: string;
+  pet_ID: string;
 }
 
 @Component({
@@ -22,8 +21,8 @@ export class UserpetsComponent implements OnInit {
   isDeleted: Boolean;
 
   constructor(private dataService: UserService, private router: Router, private dialog: MatDialog) {
-    
-    
+
+
   }
   ngOnInit(): void {
     this.getUserPets();
@@ -37,28 +36,30 @@ export class UserpetsComponent implements OnInit {
   }
 
   deletePet(petID): any {
+
     const dialogRef = this.dialog.open(ConfirmMessageDialogComponent, {
       width: '250px',
-      data: { isDeleted:  this.isDeleted}
+      data: { pet_ID: petID}
     });
+
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      if(this.isDeleted)
-      this.dataService.deletePet(petID)
-      .subscribe(res => {
-      
-        this.getUserPets();
-      });
-      
+      console.log('The dialog was closed ' + result);
+
+      if (result)
+        this.dataService.deletePet(result).subscribe(res => {
+          this.getUserPets();//render list
+        });
 
     });
 
-   
+
 
 
   }
 
 
 }
+
+
 
 

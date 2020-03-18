@@ -47,6 +47,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ViewpostsComponent } from './viewposts/viewposts.component';
 import { UserpetsComponent } from './userpets/userpets.component';
 import { ConfirmMessageDialogComponent } from './confirm-message-dialog/confirm-message-dialog.component';
+import { UpdatePrfileComponent } from './update-prfile/update-prfile.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { ConfirmMessageDialogComponent } from './confirm-message-dialog/confirm-
     AddpostComponent,
     ViewpostsComponent,
     UserpetsComponent,
-    ConfirmMessageDialogComponent
+    ConfirmMessageDialogComponent,
+    UpdatePrfileComponent
     
     
   ],
@@ -92,7 +94,7 @@ import { ConfirmMessageDialogComponent } from './confirm-message-dialog/confirm-
     MatRadioModule,
     MatNativeDateModule,
     MatSnackBarModule,
-
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

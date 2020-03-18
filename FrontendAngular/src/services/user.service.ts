@@ -33,7 +33,7 @@ export class UserService {
 
   //AYA
   getPetsFromUserEmail() {
-    let email = "/mohammadhanif@mum.edu";
+    let email = "/alex@mum.edu";
     const headers = this.httpOptions.headers;
     return this.http.get<user>(this.apiUrl + "/userpets" + email, { headers });
   }
