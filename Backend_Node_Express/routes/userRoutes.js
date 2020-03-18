@@ -18,6 +18,9 @@ router.get('/resetPassword', controller.resetPassword);
 router.post('/', controller.signup);
 router.post('/addPet/:des/:email', uploadPhoto.single('photo'), controller.addPet);
 router.put('/editProfile/:email', controller.updateProfile);
+
 router.get('/:email', controller.findUserByEmail);
+router.get('/userpets/:email', controller.findUserByEmail);
+router.delete('/userpets/:id', controller.deletePet);
 
 module.exports = router;

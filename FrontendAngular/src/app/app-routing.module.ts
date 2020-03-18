@@ -8,7 +8,7 @@ import { ResetComponent } from './reset/reset.component';
 import { AddPetComponent } from './add-pet/add-pet.component';
 import { AddpostComponent } from './addpost/addpost.component'
 import { ViewpostsComponent } from './viewposts/viewposts.component'
-import { AppComponent } from './app.component';
+import { UserpetsComponent } from './userpets/userpets.component'
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -20,7 +20,8 @@ const routes: Routes = [
   { path: 'addpost', component: AddpostComponent },
   { path: 'viewpost', component: ViewpostsComponent },
   { path: 'addPet', component:AddPetComponent},
-  { path: 'posts', component: AddpostComponent }
+  { path: 'posts', component: AddpostComponent },
+  { path: 'userpets', component: UserpetsComponent }
 
 ];
 

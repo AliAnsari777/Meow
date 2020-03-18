@@ -22,6 +22,7 @@ import { MatSelectModule } from '@angular/material/select';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -44,6 +45,8 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatNativeDateModule} from '@angular/material/core'
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ViewpostsComponent } from './viewposts/viewposts.component';
+import { UserpetsComponent } from './userpets/userpets.component';
+import { ConfirmMessageDialogComponent } from './confirm-message-dialog/confirm-message-dialog.component';
 
 
 @NgModule({
@@ -56,7 +59,9 @@ import { ViewpostsComponent } from './viewposts/viewposts.component';
     AddPetComponent,
     MyPostsComponent,
     AddpostComponent,
-    ViewpostsComponent
+    ViewpostsComponent,
+    UserpetsComponent,
+    ConfirmMessageDialogComponent
     
     
   ],
@@ -86,7 +91,8 @@ import { ViewpostsComponent } from './viewposts/viewposts.component';
     MatDatepickerModule,
     MatRadioModule,
     MatNativeDateModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
 
   ],
   providers: [],
