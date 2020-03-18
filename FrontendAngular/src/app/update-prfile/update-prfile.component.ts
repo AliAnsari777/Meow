@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { user } from '../../model/user';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -12,9 +13,9 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 
 export class UpdatePrfileComponent implements OnInit {
    newForm: FormGroup;
-  useremail = "ansari@mum.edu";
+  useremail = "alex@mum.edu";
 
-  constructor(private userService: UserService, private formBuilder: FormBuilder) { 
+  constructor(private userService: UserService, private formBuilder: FormBuilder, private http:HttpClient) { 
     this.newForm = this.formBuilder.group({
       name: [''],
       email: [''],
@@ -33,7 +34,11 @@ export class UpdatePrfileComponent implements OnInit {
     })
   }
   
+  photo : File;
 
+  onFileChanged(event) {
+    this.photo = <File>event.target.files[0];
+  }
 
 
   updateForm(){
@@ -41,6 +46,7 @@ export class UpdatePrfileComponent implements OnInit {
     formData.append("name", this.newForm.get('name').value);
     formData.append("email", this.newForm.get('email').value);
     formData.append("phone", this.newForm.get('phone').value);
+    formData.append("userPhoto", this.photo);
 
     for (var pair of formData.entries()) {
       console.log(pair[0]+ ' - ' + pair[1]); 

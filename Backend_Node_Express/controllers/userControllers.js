@@ -122,11 +122,6 @@ module.exports.resetPassword = async function(req, res) {
 
 //for adding new pet to users document into his pets array
 module.exports.addPet = async function(req, res) {
-    console.log("2.user controller");
-    console.log(req.body.name);
-    console.log(req.body.gender);
-
-
     if (req.file != null)
         req.body.photo = req.file.path;
     const userEmail = req.params.email.toLowerCase();
@@ -153,32 +148,23 @@ module.exports.updateProfile = async function(req, res) {
     const newInfo = req.body;
     userEmail = req.params.email.toLowerCase();
 
-    console.log("update profile server:");
+    console.log("3.update profile server:");
     console.log(req.body.name);
     console.log(req.body.phone);
 
 
 
-    if (newInfo.userPhoto == null) {
+    if (newInfo.userPhoto == undefined) {
         userModel.updateOne({ email: userEmail }, { $set: { name: newInfo.name, phone: newInfo.phone } },
             (err, result) => {
                 if (err) throw err;
 
                 res.json(result);
             })
-
-        // userModel.findOneAndUpdate({ email: userEmail }, { $set: { name: newInfo.name, email: newInfo.email.toLowerCase(), phone: newInfo.phone } },
-        //     (err, result) => {
-        //         if (err) throw err;
-
-        //         res.json(result);
-        //     }
-        // )
     } else {
         userModel.updateOne({ email: userEmail }, {
                 $set: {
                     name: newInfo.name,
-                    email: newInfo.email.toLowerCase(),
                     phone: newInfo.phone,
                     userPhoto: newInfo.userPhoto
                 }
@@ -188,20 +174,6 @@ module.exports.updateProfile = async function(req, res) {
 
                 res.json(result);
             })
-
-        // userModel.findOneAndUpdate({ email: userEmail }, {
-        //         $set: {
-        //             name: newInfo.name,
-        //             email: newInfo.email.toLowerCase(),
-        //             phone: newInfo.phone,
-        //             userPhoto: newInfo.userPhoto
-        //         }
-        //     },
-        //     (err, result) => {
-        //         if (err) throw err;
-
-        //         res.json(result);
-        //     })
     }
 }
 

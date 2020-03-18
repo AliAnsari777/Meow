@@ -3,6 +3,7 @@ export class user {
     email:  String;
     phone:  String;
     password:  String;
+    userPhoto: String;
     pets: [{
         name: String,
         gender: String,

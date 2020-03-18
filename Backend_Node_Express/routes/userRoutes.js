@@ -17,7 +17,7 @@ router.get('/login', controller.login);
 router.get('/resetPassword', controller.resetPassword);
 router.post('/', controller.signup);
 router.post('/addPet/:des/:email', uploadPhoto.single('photo'), controller.addPet);
-router.post('/editProfile/:email', testRequest, controller.updateProfile);
+router.put('/editProfile/:des/:email', uploadPhoto.single('photo'), controller.updateProfile);
 router.get('/:email', controller.findUserByEmail);
 router.get('/findProfile/:email', controller.findUserProfile);
 
