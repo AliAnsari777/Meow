@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mongodb = require('mongodb');
 
 let userSchema = new mongoose.Schema({
     name: { type: String, required: true },
@@ -7,6 +8,7 @@ let userSchema = new mongoose.Schema({
     password: { type: String, required: true },
     userPhoto: String,
     pets: [{
+        _id: mongodb.ObjectID,
         name: String,
         gender: String,
         age: Number,

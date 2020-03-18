@@ -1,10 +1,11 @@
 export class post {
-    _id:string;
+    _id:String;
+    email: String;
     text: String;
     postDate: Date;
     status:  Boolean;
     postType:  String;
-    petName: string;
+    petName: String;
     petType: String;
     photo: String;
     gender: String;

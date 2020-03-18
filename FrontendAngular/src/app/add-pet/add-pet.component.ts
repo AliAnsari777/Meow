@@ -82,10 +82,7 @@ export class AddPetComponent implements OnInit {
     {value: 'rabbit', viewValue: 'Rabbit'},
   ]
 
- 
 
-
-  apiUrl = "http://localhost:3000/users";
   addNewPet(){
     var formData: any = new FormData();
     formData.append("name", this.registerForm.get('name').value);
@@ -93,6 +90,10 @@ export class AddPetComponent implements OnInit {
     formData.append("animalType", this.registerForm.get('animalType').value);
     formData.append("age", this.registerForm.get('age').value);
     formData.append("gender", this.registerForm.get('gender').value);
+
+    for (var pair of formData.entries()) {
+      console.log(pair[0]+ ' - ' + pair[1]); 
+    }  
 
     this.userService.addPet(formData).subscribe((data : {}) => {});
   }
