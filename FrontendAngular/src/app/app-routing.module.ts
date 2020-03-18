@@ -11,6 +11,7 @@ import { ViewpostsComponent } from './viewposts/viewposts.component'
 import { UserpetsComponent } from './userpets/userpets.component'
 import { AppComponent } from './app.component';
 import { UpdatePrfileComponent } from './update-prfile/update-prfile.component';
+import { MyPostsComponent } from './my-posts/my-posts.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'services', component: ServicesComponent },
   { path: 'login', component: LoginComponent },
   { path: 'reset', component: ResetComponent },
+  { path: 'viewUserPosts', component: MyPostsComponent},
 
   //AYA
   { path: 'addpost', component: AddpostComponent },

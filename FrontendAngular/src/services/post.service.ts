@@ -29,6 +29,16 @@ export class PostService {
     return this.http.get<post>(this.apiUrl + "/" + postType, { headers });
   }
 
+
+  // get all post for specific user by using email
+  getAllUserPosts(userEmail) {
+    console.log("1.post service : " + userEmail);
+    
+    const headers = this.httpOptions.headers;
+    return this.http.get<post>(this.apiUrl + "/userposts/" + userEmail);
+  }
+
+
   // delete a spacific post
   deletePost(postId) {
     console.log(this.apiUrl + "/" + postId);
