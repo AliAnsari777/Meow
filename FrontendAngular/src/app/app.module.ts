@@ -45,12 +45,8 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatNativeDateModule} from '@angular/material/core'
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ViewpostsComponent } from './viewposts/viewposts.component';
-<<<<<<< HEAD
 import { UserpetsComponent } from './userpets/userpets.component';
 import { ConfirmMessageDialogComponent } from './confirm-message-dialog/confirm-message-dialog.component';
-=======
-import { UpdatePrfileComponent } from './update-prfile/update-prfile.component';
->>>>>>> a77bd521a0b3fd8f2dd1b2769a7dc69f93b1c140
 
 
 @NgModule({
@@ -64,12 +60,8 @@ import { UpdatePrfileComponent } from './update-prfile/update-prfile.component';
     MyPostsComponent,
     AddpostComponent,
     ViewpostsComponent,
-<<<<<<< HEAD
     UserpetsComponent,
     ConfirmMessageDialogComponent
-=======
-    UpdatePrfileComponent
->>>>>>> a77bd521a0b3fd8f2dd1b2769a7dc69f93b1c140
     
     
   ],
@@ -100,7 +92,6 @@ import { UpdatePrfileComponent } from './update-prfile/update-prfile.component';
     MatRadioModule,
     MatNativeDateModule,
     MatSnackBarModule,
-    MatDialogModule
 
   ],
   providers: [],
