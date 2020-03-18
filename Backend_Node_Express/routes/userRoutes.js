@@ -4,7 +4,7 @@ var router = express.Router();
 const controller = require('../controllers/userControllers');
 const { verifyToken } = require('../middleware/verifyToken');
 const { uploadPhoto } = require('../middleware/savePhoto');
-
+const { testRequest } = require('../middleware/testRequest');
 
 /* GET users listing. */
 
@@ -16,9 +16,15 @@ router.get('/getAll', verifyToken, controller.getAll);
 router.get('/login', controller.login);
 router.get('/resetPassword', controller.resetPassword);
 router.post('/', controller.signup);
+
+//ALI
 router.post('/addPet/:des/:email', uploadPhoto.single('photo'), controller.addPet);
 router.put('/editProfile/:email', controller.updateProfile);
+router.post('/editProfile/:email', testRequest, controller.updateProfile);
+router.get('/:email', controller.findUserByEmail);
+router.get('/findProfile/:email', controller.findUserProfile);
 
+//AYA
 router.get('/:email', controller.findUserByEmail);
 router.get('/userpets/:email', controller.findUserByEmail);
 router.delete('/userpets/:id', controller.deletePet);
