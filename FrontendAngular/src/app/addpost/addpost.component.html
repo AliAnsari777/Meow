@@ -1,4 +1,4 @@
-<mat-card class="add-post-card" style="margin-top: 40px;">
+<mat-card class="add-post-card" style="margin-top: 25px;"> 
     <mat-card-header>
         <div mat-card-avatar class="add-post-header-image"></div>
         <mat-card-title class="add-post-title accentColor">Add New Post</mat-card-title>
@@ -12,13 +12,13 @@
                 <div class="col-md-6">
                     <mat-form-field class="add-post-full-width">
                         <mat-label>Description</mat-label>
-                        <input matInput placeholder="description" formControlName="text" required>
+                        <input matInput placeholder="description" formControlName="text">
                     </mat-form-field>
                 </div>
                 <div class="col-md-6">
                     <mat-form-field class="add-post-full-width">
                         <mat-label>Pet Name</mat-label>
-                        <input matInput placeholder="Pet Name" formControlName="petName" required>
+                        <input matInput placeholder="Pet Name" formControlName="petName">
                     </mat-form-field>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                         <mat-label>Date</mat-label>
                         <input matInput [matDatepicker]="picker1" formControlName="date">
                         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                        <mat-datepicker #picker1></mat-datepicker>
+                        <mat-datepicker #picker1 color="accent"></mat-datepicker>
                     </mat-form-field>
                 </div>
                 <div class="col-md-4">
@@ -54,22 +54,23 @@
                         <mat-label>Sitting Start Date</mat-label>
                         <input matInput [matDatepicker]="picker2" formControlName="startSittingDate">
                         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                        <mat-datepicker #picker2></mat-datepicker>
+                        <mat-datepicker #picker2 color="accent"></mat-datepicker>
                     </mat-form-field>
+
                 </div>
                 <div class="col-md-6">
                     <mat-form-field class="add-post-full-width">
                         <mat-label>Sitting End Date</mat-label>
                         <input matInput [matDatepicker]="picker3" formControlName="endSittingDate">
                         <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-                        <mat-datepicker #picker3></mat-datepicker>
+                        <mat-datepicker #picker3 color="accent"></mat-datepicker>
                     </mat-form-field>
                 </div>
                
-                <div class="col-md-12" style="padding-left: 160px;">
+                <div class="col-md-12 mat-label" style="padding-left: 160px;">
                     <mat-radio-group ria-labelledby="Select a gender" formControlName="gender">
-                        <mat-radio-button class="col-md-3" value="female">Female</mat-radio-button>
-                        <mat-radio-button class="col-md-3" value="male">Male</mat-radio-button>
+                        <mat-radio-button class="col-md-3 accentColor" value="female">Female</mat-radio-button>
+                        <mat-radio-button class="col-md-3 accentColor" value="male">Male</mat-radio-button>
                     </mat-radio-group>
                 </div>
             </div>

@@ -25,7 +25,7 @@ export class UserService {
   }
 
   // retrive email from local storage
-  email = "alex@mum.edu";
+  email = "aya.zaki.moh@gmail.com";
 
   createUser(user): Observable<user> {
     return this.http.post<user>(this.apiUrl + "/", JSON.stringify(user), this.httpOptions)
@@ -50,7 +50,7 @@ export class UserService {
  }
   //AYA
   getPetsFromUserEmail() {
-    let email = "/alex@mum.edu";
+    let email = "/aya.zaki.moh@gmail.com";
     const headers = this.httpOptions.headers;
     return this.http.get<user>(this.apiUrl + "/userpets" + email, { headers });
   }
@@ -60,4 +60,5 @@ export class UserService {
     return this.http.delete(this.apiUrl + "/userpets/" + petID, { headers });
 
   }
+
 }

@@ -39,7 +39,7 @@ export class UserpetsComponent implements OnInit {
 
     const dialogRef = this.dialog.open(ConfirmMessageDialogComponent, {
       width: '250px',
-      data: { pet_ID: petID}
+      data: { pet_ID: petID }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -49,14 +49,8 @@ export class UserpetsComponent implements OnInit {
         this.dataService.deletePet(result).subscribe(res => {
           this.getUserPets();//render list
         });
-
     });
-
-
-
-
   }
-
 
 }
 

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/post.service';
 import { Router } from '@angular/router';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
-import {MatSnackBar,MatSnackBarConfig,MatSnackBarHorizontalPosition,MatSnackBarVerticalPosition,
+import {
+  MatSnackBar, MatSnackBarConfig, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 
 interface PostType {
@@ -23,15 +24,16 @@ export class AddpostComponent implements OnInit {
     { value: 'adaption', viewValue: 'Adaption' },
     { value: 'sitting', viewValue: 'Sitting' }
   ];
-  
-  message: string = 'post added successfully.';
+
+  successMessage: string = 'Post Added Successfully...';
+  failedMessage: string = 'Failed to Add New Post...';
   actionButtonLabel: string = 'ok';
   action: boolean = true;
   setAutoHide: boolean = true;
   autoHide: number = 5000;
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
-  
+
   addExtraClass: boolean = false;
 
   constructor(private dataService: PostService, private router: Router, private formBuilder: FormBuilder, private _snackBar: MatSnackBar) {
@@ -59,7 +61,7 @@ export class AddpostComponent implements OnInit {
       Validators.required
     ]),
     age: new FormControl('', [
-      
+
     ]),
     //address
     state: new FormControl('', [
@@ -75,7 +77,7 @@ export class AddpostComponent implements OnInit {
       Validators.required
     ]),
     petName: new FormControl('', [
-      
+
     ])
   })
 
@@ -85,17 +87,26 @@ export class AddpostComponent implements OnInit {
   addNewPost() {
     this.dataService.addPost(this.addPostForm.value)
       .subscribe((data: {}) => {
-        console.log(data);
-        this.openSnackBar();
-        this.router.navigateByUrl('login');
+        if (data) {
+          this.openSnackBar("successMessage");
+          this.router.navigateByUrl('login');
+        }
+        else {
+          this.openSnackBar("failedMessage");
+        }
       })
   }
 
-  openSnackBar() {
+  openSnackBar(requestState) {
     let config = new MatSnackBarConfig();
     config.verticalPosition = this.verticalPosition;
     config.horizontalPosition = this.horizontalPosition;
     config.duration = this.setAutoHide ? this.autoHide : 0;
-    this._snackBar.open(this.message, this.action ? this.actionButtonLabel : undefined,config);
+
+    if (requestState === "successMessage")
+      this._snackBar.open(this.successMessage, this.action ? this.actionButtonLabel : undefined, config);
+
+    else
+      this._snackBar.open(this.failedMessage, this.action ? this.actionButtonLabel : undefined, config);
   }
 }

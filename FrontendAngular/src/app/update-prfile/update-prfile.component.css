@@ -1,29 +1,35 @@
 .register-card {
     max-width: 400px;
-    margin-left: auto;
+    margin-left: auto; 
     margin-right: auto;
-    box-shadow: 0px 5px 5px -1px rgba(3, 218, 198, 1), 0px 3px 3px 0px rgba(65, 29, 29, 0.3), 0px 3px 3px 0px rgba(0, 0, 0, 0.3) !important;
-    background-color: lightgoldenrodyellow;
+    box-shadow: 0px 5px 5px -1px rgb(255,64,129),
+    0px 3px 3px 0px rgba(65, 29, 29, 0.3),
+     0px 3px 3px 0px rgba(0, 0, 0, 0.3) !important;
+     background-color: #fff;
 }
 
 .register-header-image {
     background-image: url('../../assets//images/featured-pet.png');
     background-size: cover;
-    width: 130px;
-    height: 100px;
-}
-
+    width: 75px;
+    height: 68px;
+  }
+  .accentColor{
+    color:rgb(255,64,129)
+  }
 .register-title {
     font-size: 40px;
 }
+.bigFont{
+    font-size: 24px;
+  }
 
 .register-content {
     font-size: 24px;
 }
 
-.register-actions {
+.update-profile-actions {
     font-size: 24px;
-    text-align: center;
 }
 
 .register-full-width {
@@ -31,15 +37,20 @@
 }
 
 .sign-in {
-    color: #6200ee;
+    color:rgb(255,64,129);
     font-size: 24px;
 }
 
 .resgiter {
-    color: #6200ee;
+    color:rgb(255,64,129);
     font-size: 24px;
 }
 
 .mat-form-field-infix {
     border-top: 0.1em;
 }
+
+mat-card-actions{
+    text-align: center;
+}
+

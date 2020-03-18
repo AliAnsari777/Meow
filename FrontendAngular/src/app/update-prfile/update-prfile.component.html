@@ -1,35 +1,34 @@
-<mat-card class="register-card">
+<mat-card class="register-card" style="margin-top: 30px;">
     <mat-card-header>
         <div mat-card-avatar class="register-header-image"></div>
-        <mat-card-title class="register-title">MEWO</mat-card-title>
-        <mat-card-subtitle class="register-content">Update Profile</mat-card-subtitle>
+        <mat-card-title class="register-title accentColor">MEWO</mat-card-title>
+        <mat-card-subtitle class="register-content accentColor">Update Profile</mat-card-subtitle>
     </mat-card-header>
 
     <form class="register-form" [formGroup]="newForm">
         <mat-card-content class="register-content">
 
             <mat-form-field class="register-full-width">
-                <mat-label>Name</mat-label>
-                <input matInput placeholder="Name" formControlName="name" required>
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email">
             </mat-form-field>
 
             <mat-form-field class="register-full-width">
-                <mat-label>Email</mat-label>
-                <input matInput formControlName="email" placeholder="Ex. pat@example.com" required>
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name">
             </mat-form-field>
 
             <mat-form-field class="register-full-width">
                 <mat-label>Phone</mat-label>
-                <input matInput placeholder="Phone" formControlName="phone" required>
+                <input matInput formControlName="phone">
             </mat-form-field>
-
             <input #file type="file" [hidden]="true" (change)="onFileChanged($event)" accept="image/*">
-            <!-- formControlName="photo" -->
-            <button mat-raised-button color="primary" (click)="file.click()">Upload Photo</button>
-
         </mat-card-content>
-        <mat-card-actions class="register-actions">
-            <button mat-button class="sign-in" type="submit" [disabled]="!newForm.valid" (click)="updateForm()">Update Profile</button>
+        
+        <mat-card-actions class="update-profile-actions">
+            <!-- formControlName="photo" -->
+            <button mat-raised-button color="accent" class="bigFont" (click)="file.click()">Upload Photo</button>
+            <button mat-raised-button color="accent" type="submit" class="bigFont" [disabled]="!newForm.valid" (click)="updateForm()">Update Profile</button>
         </mat-card-actions>
     </form>
 </mat-card>

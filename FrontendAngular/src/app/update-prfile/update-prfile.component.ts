@@ -12,36 +12,42 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class UpdatePrfileComponent implements OnInit {
-   newForm: FormGroup;
+  newForm: FormGroup;
   useremail = "alex@mum.edu";
 
-  constructor(private userService: UserService, private formBuilder: FormBuilder, private http:HttpClient) { 
+  constructor(private userService: UserService, private formBuilder: FormBuilder, private http: HttpClient) {
     this.newForm = this.formBuilder.group({
-      name: [''],
-      email: [''],
-      phone: [''],
+      name: new FormControl('', [
+        Validators.required
+      ]),
+      email: new FormControl('', [
+        Validators.required
+      ]),
+      phone: new FormControl('', [
+        Validators.required
+      ]),
     })
     this.newForm.controls['email'].disable()
   }
-  
+
   ngOnInit() {
     this.userService.receiveUserProfile(this.useremail).subscribe(result => {
       this.newForm.patchValue({
-          name: result.name,
-          email: result.email,
-          phone: result.phone
-        }); 
+        name: result.name,
+        email: result.email,
+        phone: result.phone
+      });
     })
   }
-  
-  photo : File;
+
+  photo: File;
 
   onFileChanged(event) {
     this.photo = <File>event.target.files[0];
   }
 
 
-  updateForm(){
+  updateForm() {
     var formData: any = new FormData();
     formData.append("name", this.newForm.get('name').value);
     formData.append("email", this.newForm.get('email').value);
@@ -49,12 +55,12 @@ export class UpdatePrfileComponent implements OnInit {
     formData.append("userPhoto", this.photo);
 
     for (var pair of formData.entries()) {
-      console.log(pair[0]+ ' - ' + pair[1]); 
-    }  
-  
+      console.log(pair[0] + ' - ' + pair[1]);
+    }
+
 
     console.log("1.this is controller" + this.newForm.get('name').value);
-    
-    this.userService.updateProfile(formData).subscribe((data : {}) => {});
+
+    this.userService.updateProfile(formData).subscribe((data: {}) => { });
   }
 }
