@@ -94,7 +94,7 @@ import { UpdatePrfileComponent } from './update-prfile/update-prfile.component';
     MatRadioModule,
     MatNativeDateModule,
     MatSnackBarModule,
-
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

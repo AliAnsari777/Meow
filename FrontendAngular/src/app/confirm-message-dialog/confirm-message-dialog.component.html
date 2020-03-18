@@ -1,12 +1,9 @@
-<h1 mat-dialog-title>
-
-</h1>
-
-<div mat-dialog-content>
-    <p></p>
+<h1 mat-dialog-title class="font-color">Delete Confirmation</h1>
+<div mat-dialog-content class="font-color">
+    <p>You wanaa delete me?</p>
 </div>
 
 <div mat-dialog-actions>
-    <button mat-button (click)="onNoClick()">No</button>
-    <button mat-raised-button color="primary">Yes</button>
+    <button mat-button color="accent" (click)="onNoClick()">No</button>
+    <button mat-raised-button color="accent" [mat-dialog-close]="data.pet_ID" cdkFocusInitial>Yes</button>
 </div>
