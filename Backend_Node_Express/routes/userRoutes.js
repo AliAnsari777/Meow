@@ -4,7 +4,7 @@ var router = express.Router();
 const controller = require('../controllers/userControllers');
 const { verifyToken } = require('../middleware/verifyToken');
 const { uploadPhoto } = require('../middleware/savePhoto');
-
+const { testRequest } = require('../middleware/testRequest');
 
 /* GET users listing. */
 
@@ -17,7 +17,9 @@ router.get('/login', controller.login);
 router.get('/resetPassword', controller.resetPassword);
 router.post('/', controller.signup);
 router.post('/addPet/:des/:email', uploadPhoto.single('photo'), controller.addPet);
-router.put('/editProfile/:email', controller.updateProfile);
+router.post('/editProfile/:email', testRequest, controller.updateProfile);
 router.get('/:email', controller.findUserByEmail);
+router.get('/findProfile/:email', controller.findUserProfile);
+
 
 module.exports = router;

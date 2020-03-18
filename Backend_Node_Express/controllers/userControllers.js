@@ -123,6 +123,9 @@ module.exports.resetPassword = async function(req, res) {
 //for adding new pet to users document into his pets array
 module.exports.addPet = async function(req, res) {
     console.log("2.user controller");
+    console.log(req.body.name);
+    console.log(req.body.gender);
+
 
     if (req.file != null)
         req.body.photo = req.file.path;
@@ -145,11 +148,19 @@ module.exports.addPet = async function(req, res) {
 
 
 module.exports.updateProfile = async function(req, res) {
+    console.log(req.body);
+
     const newInfo = req.body;
     userEmail = req.params.email.toLowerCase();
 
+    console.log("update profile server:");
+    console.log(req.body.name);
+    console.log(req.body.phone);
+
+
+
     if (newInfo.userPhoto == null) {
-        userModel.updateOne({ email: userEmail }, { $set: { name: newInfo.name, email: newInfo.email.toLowerCase(), phone: newInfo.phone } },
+        userModel.updateOne({ email: userEmail }, { $set: { name: newInfo.name, phone: newInfo.phone } },
             (err, result) => {
                 if (err) throw err;
 
@@ -197,6 +208,15 @@ module.exports.updateProfile = async function(req, res) {
 module.exports.findUserByEmail = async function(req, res) {
     userEmail = req.params.email.toLowerCase();
     userModel.findOne({ email: userEmail }, (err, result) => {
+        if (err) throw err;
+
+        res.json(result);
+    })
+}
+
+module.exports.findUserProfile = async function(req, res) {
+    userEmail = req.params.email.toLowerCase();
+    userModel.findOne({ email: userEmail }, { pets: 0, password: 0 }, (err, result) => {
         if (err) throw err;
 
         res.json(result);

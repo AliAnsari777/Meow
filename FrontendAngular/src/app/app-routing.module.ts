@@ -9,6 +9,7 @@ import { ResetComponent } from './reset/reset.component';
 import { AddPetComponent } from './add-pet/add-pet.component';
 import { AddpostComponent } from './addpost/addpost.component'
 import { AppComponent } from './app.component';
+import { UpdatePrfileComponent } from './update-prfile/update-prfile.component';
 
 
 
@@ -18,8 +19,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'reset', component:ResetComponent},
   { path: 'addPet', component:AddPetComponent},
-  { path: 'posts', component: AddpostComponent }
-
+  { path: 'posts', component: AddpostComponent },
+  { path: 'updateProfile', component:UpdatePrfileComponent},
 ];
 
 @NgModule({
