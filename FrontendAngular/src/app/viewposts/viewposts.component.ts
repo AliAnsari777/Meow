@@ -3,6 +3,8 @@ import { PostService } from '../../services/post.service';
 import { Router } from '@angular/router';
 import { post } from '../../model/post';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { ConfirmMessageDialogComponent } from '../confirm-message-dialog/confirm-message-dialog.component'
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-viewposts',
@@ -12,7 +14,7 @@ import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms'
 export class ViewpostsComponent implements OnInit {
   posts: post;
 
-  constructor(private dataService: PostService, private router: Router, private formBuilder: FormBuilder) {
+  constructor(private dataService: PostService, private router: Router, private formBuilder: FormBuilder, private dialog: MatDialog) {
 
   }
 
@@ -27,15 +29,21 @@ export class ViewpostsComponent implements OnInit {
       });
   }
 
-  backtoLogin() {
-
-  }
   deletePost(postID) {
-    this.dataService.deletePost(postID)
-      .subscribe(data => {
-        this.getAllPosts();
-      });
 
+    const dialogRef = this.dialog.open(ConfirmMessageDialogComponent, {
+      width: '250px',
+      data: { pet_ID: postID }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed ' + result);
+
+      if (result)
+        this.dataService.deletePost(postID)
+          .subscribe(data => {
+            this.getAllPosts();
+          });
+    });
   }
-
 }

@@ -23,7 +23,7 @@ export class UpdatePrfileComponent implements OnInit {
     })
     this.newForm.controls['email'].disable();
   }
-  
+
   ngOnInit() {
     this.userService.receiveUserProfile(this.useremail).subscribe(result => {
       this.newForm.patchValue({
@@ -40,7 +40,7 @@ export class UpdatePrfileComponent implements OnInit {
   }
 
 
-  updateForm(){
+  updateForm() {
     var formData: any = new FormData();
     formData.append("userPhoto", this.photo);
     formData.append("name", this.newForm.get('name').value);
