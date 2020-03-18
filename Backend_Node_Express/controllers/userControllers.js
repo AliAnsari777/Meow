@@ -10,7 +10,7 @@ const userModel = require('../database/userModel');
 
 databaseConnection.connect();
 
-module.exports.getAll = async function (req, res) {
+module.exports.getAll = async function(req, res) {
     jwt.verify(req.token, 'secretkey', (err, authData) => {
         if (err) {
             res.sendStatus(403);
@@ -23,14 +23,14 @@ module.exports.getAll = async function (req, res) {
 }
 
 //used >> npm i jsonwebtoken
-module.exports.login = async function (req, res) {
+module.exports.login = async function(req, res) {
     const email = req.body.email;
     const password = req.body.password;
     userModel.findOne({
         email: email
     }, (err, userdoc) => {
         if (userdoc) {
-            bcrypt.compare(password, userdoc.password).then(function (result) {
+            bcrypt.compare(password, userdoc.password).then(function(result) {
                 if (result) {
                     jwt.sign({ user: userdoc }, 'secretkey', { expiresIn: '50s' }, (err, token) => {
                         res.json({
@@ -51,11 +51,11 @@ module.exports.login = async function (req, res) {
 }
 
 //used >> npm i bcrypt
-module.exports.signup = async function (req, res) {
+module.exports.signup = async function(req, res) {
     const saltRounds = 10;
     const password = req.body.password;
-    bcrypt.genSalt(saltRounds, function (err, salt) {
-        bcrypt.hash(password, salt, function (err, hash) {
+    bcrypt.genSalt(saltRounds, function(err, salt) {
+        bcrypt.hash(password, salt, function(err, hash) {
             req.body.password = hash;
             req.body.email = req.body.email.toLowerCase();
             req.body.userPhoto = path.join('assets', 'usersPhoto', 'default.jpg')
@@ -72,7 +72,7 @@ module.exports.signup = async function (req, res) {
 }
 
 //used >> npm i nodejs-nodemailer-outlook & npm i generate-password
-module.exports.resetPassword = async function (req, res) {
+module.exports.resetPassword = async function(req, res) {
     const email = req.body.email;
     userModel.findOne({
         email: email
@@ -85,8 +85,8 @@ module.exports.resetPassword = async function (req, res) {
             });
             //hash password
             const saltRounds = 10;
-            bcrypt.genSalt(saltRounds, function (err, salt) {
-                bcrypt.hash(newPassword, salt, function (err, hash) {
+            bcrypt.genSalt(saltRounds, function(err, salt) {
+                bcrypt.hash(newPassword, salt, function(err, hash) {
                     //update password to database
                     userModel.updateOne({
                         email: email
@@ -121,12 +121,7 @@ module.exports.resetPassword = async function (req, res) {
 }
 
 //for adding new pet to users document into his pets array
-module.exports.addPet = async function (req, res) {
-    console.log("2.user controller");
-    console.log(req.body.name);
-    console.log(req.body.gender);
-
-
+module.exports.addPet = async function(req, res) {
     if (req.file != null)
         req.body.photo = req.file.path;
     const userEmail = req.params.email.toLowerCase();
@@ -146,32 +141,32 @@ module.exports.addPet = async function (req, res) {
     // })
 }
 
-module.exports.updateProfile = async function (req, res) {
+module.exports.updateProfile = async function(req, res) {
     console.log(req.body);
     const newInfo = req.body;
     userEmail = req.params.email.toLowerCase();
 
-    console.log("update profile server:");
+    console.log("3.update profile server:");
     console.log(req.body.name);
     console.log(req.body.phone);
 
-    if (newInfo.userPhoto == null) {
+
+
+    if (newInfo.userPhoto == undefined) {
         userModel.updateOne({ email: userEmail }, { $set: { name: newInfo.name, phone: newInfo.phone } },
             (err, result) => {
                 if (err) throw err;
 
                 res.json(result);
             })
-
     } else {
         userModel.updateOne({ email: userEmail }, {
-            $set: {
-                name: newInfo.name,
-                email: newInfo.email.toLowerCase(),
-                phone: newInfo.phone,
-                userPhoto: newInfo.userPhoto
-            }
-        },
+                $set: {
+                    name: newInfo.name,
+                    phone: newInfo.phone,
+                    userPhoto: newInfo.userPhoto
+                }
+            },
             (err, result) => {
                 if (err) throw err;
 
@@ -180,7 +175,7 @@ module.exports.updateProfile = async function (req, res) {
     }
 }
 
-module.exports.findUserByEmail = async function (req, res) {
+module.exports.findUserByEmail = async function(req, res) {
     userEmail = req.params.email.toLowerCase();
     userModel.findOne({ email: userEmail }, (err, result) => {
         if (err) throw err;
@@ -190,16 +185,15 @@ module.exports.findUserByEmail = async function (req, res) {
 }
 
 //AYA
-module.exports.deletePet = async function (req, res) {
+module.exports.deletePet = async function(req, res) {
     //  let email = "aya@gmail.com";
     let petId = req.params.id;
     userModel.updateOne({ "pets._id": petId }, {
         $pull: { pets: { _id: petId } }
-    }, function (err, postDoc) {
+    }, function(err, postDoc) {
         if (err) return handleError(err);
         res.json(postDoc);
-    }
-    )
+    })
 };
 
 //ALI

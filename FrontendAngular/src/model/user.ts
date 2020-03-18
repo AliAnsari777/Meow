@@ -1,8 +1,8 @@
 export class user {
-    name: String;
-    email: String;
-    phone: String;
-    password: String;
+	name: String;
+    email:  String;
+    phone:  String;
+    password:  String;
     userPhoto: File;
     pets: [{
         _id: String,
