@@ -11,14 +11,9 @@ const userModel = require('../database/userModel');
 databaseConnection.connect();
 
 module.exports.getAll = async function(req, res) {
-    jwt.verify(req.token, 'secretkey', (err, authData) => {
-        if (err) {
-            res.sendStatus(403);
-        } else {
+    
             userModel.find({}, (err, docs) => {
                 res.json(docs);
-            })
-        }
     })
 }
 
@@ -32,12 +27,12 @@ module.exports.login = async function(req, res) {
         if (userdoc) {
             bcrypt.compare(password, userdoc.password).then(function(result) {
                 if (result) {
-                    jwt.sign({ user: userdoc }, 'secretkey', { expiresIn: '50s' }, (err, token) => {
+                    jwt.sign({ user: userdoc }, 'secretkey', { expiresIn: '24h' }, (err, token) => {
                         res.json({
                             name: userdoc.name,
                             email: userdoc.email,
                             token: token,
-                            expiresIn: 50
+                            expiresIn: "24h"
                         })
                     });
                 } else {

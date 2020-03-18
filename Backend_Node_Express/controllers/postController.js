@@ -22,6 +22,8 @@ module.exports.deletePost = async function (req, res) {
 
 //post
 module.exports.addPost = async function (req, res) {
+    console.log();
+    
     let postDoc = new postModel(req.body);
     postDoc.save();
     res.json(postDoc);

@@ -21,11 +21,11 @@ export class AuthService {
 
   login(user){
     const headers = this.httpOptions.headers;
-    return this.http.post<jwtResponse>(this.apiUrl+"/login",user,{headers}).pipe(
+    return this.http.post<jwtResponse>(this.apiUrl+"/login/",user,{headers}).pipe(
       tap((res:  jwtResponse ) => {
         if (res) {
-          localStorage.set("ACCESS_TOKEN", res.token);
-          localStorage.set("EXPIRES_IN", res.expiresIn);
+          localStorage.setItem("ACCESS_TOKEN", res.token);
+          localStorage.setItem("EXPIRES_IN", res.expiresIn);
           this.authSubject.next(true);
         }
       }));
@@ -36,7 +36,8 @@ export class AuthService {
     this.authSubject.next(false);
   }
   isAuthenticated() {
-    return  this.authSubject.asObservable();
+    const token = localStorage.getItem("ACCESS_TOKEN");
+    return token;
 }
 
 }

@@ -1,10 +1,10 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="secondary">
     <button mat-icon-button aria-label="menu" class="menu" (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-    <button mat-button [matMenuTriggerFor]="submenu">Menu 1</button>
+    <button mat-button (click)="logOut()">Menu 1</button>
     <button mat-button>Menu 2</button>
-    <button mat-button>Menu 3</button>
+    <button mat-button [matMenuTriggerFor]="submenu">Menu 3</button>
   
     <mat-menu #submenu="matMenu">
       <button mat-menu-item>Sub-menu 1</button>

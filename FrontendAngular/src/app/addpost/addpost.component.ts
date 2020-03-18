@@ -87,7 +87,7 @@ export class AddpostComponent implements OnInit {
       .subscribe((data: {}) => {
         console.log(data);
         this.openSnackBar();
-        this.router.navigateByUrl('login');
+        //this.router.navigateByUrl('login');
       })
   }
 

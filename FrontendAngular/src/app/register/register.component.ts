@@ -13,6 +13,7 @@ import {FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
 })
 
 export class RegisterComponent implements OnInit {
+  
   registerForm = new FormGroup({
     name : new FormControl('', [
       Validators.required
@@ -37,6 +38,7 @@ export class RegisterComponent implements OnInit {
 
   
   ngOnInit(): void {
+    localStorage
   }
 
   createAccount(){

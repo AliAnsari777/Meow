@@ -13,11 +13,11 @@ const { uploadPhoto } = require('../middleware/savePhoto');
 //     res.send('respond with a resource');
 // });
 router.get('/getAll', verifyToken, controller.getAll);
-router.get('/login', controller.login);
+router.post('/login', controller.login);
 router.get('/resetPassword', controller.resetPassword);
 router.post('/', controller.signup);
-router.post('/addPet/:des/:email', uploadPhoto.single('photo'), controller.addPet);
-router.put('/editProfile/:email', controller.updateProfile);
+router.post('/addPet/:des/:email', verifyToken,uploadPhoto.single('photo'), controller.addPet);
+router.put('/editProfile/:email', verifyToken,controller.updateProfile);
 router.get('/:email', controller.findUserByEmail);
 
 module.exports = router;

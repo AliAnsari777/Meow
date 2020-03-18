@@ -16,5 +16,10 @@
   }
   .mat-sidenav-container p {
     color: #4a4a4a;
+
+  }
+  .mat-toolbar{
+    background-color:#ff4081;
+    color: white;
   }
   

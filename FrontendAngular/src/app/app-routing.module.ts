@@ -10,6 +10,7 @@ import { AddpostComponent } from './addpost/addpost.component'
 import { ViewpostsComponent } from './viewposts/viewposts.component'
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent,
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'reset', component:ResetComponent},
+  { path: '**', component:PagenotfoundComponent},
  
 
  

@@ -45,7 +45,8 @@ import {MatNativeDateModule} from '@angular/material/core'
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ViewpostsComponent } from './viewposts/viewposts.component';
 import { HomeComponent } from './home/home.component';
-
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { authInterceptorProviders } from '../services/http-token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { HomeComponent } from './home/home.component';
     MyPostsComponent,
     AddpostComponent,
     ViewpostsComponent,
-    HomeComponent
+    HomeComponent,
+    PagenotfoundComponent
     
     
   ],
@@ -91,7 +93,7 @@ import { HomeComponent } from './home/home.component';
     MatSnackBarModule
 
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
