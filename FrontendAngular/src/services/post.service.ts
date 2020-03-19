@@ -27,7 +27,7 @@ export class PostService {
   getAllPosts(postType) {
   
     const headers = this.httpOptions.headers;
-    return this.http.get<post>(this.apiUrl + "/" + postType, { headers });
+    return this.http.get<post[]>(this.apiUrl + "/" + postType, { headers });
   }
 
 

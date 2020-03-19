@@ -9,7 +9,7 @@
     onmouseout="document.getElementById('bntSitting').style.fontSize='0px';
     document.getElementById('bntSitting').style.background='url(assets/images/cat1.png)'"
             style="background: url(assets/images/cat1.png);width:240px;height:240px;font-size: 0px;"
-            (click)="openDialog()">
+            (click)="openDialog($event)">
       Sitting
     </button>
   </div>
@@ -22,7 +22,7 @@
     onmouseout="document.getElementById('btnFound').style.fontSize='0px';
     document.getElementById('btnFound').style.background='url(assets/images/rabbit1.png)'"
             style="background: url(assets/images/rabbit1.png);width:240px;height:240px;font-size: 0px;"
-             (click)="openDialog()">
+             (click)="openDialog($event)">
             Found
             </button>
   </div>
@@ -37,7 +37,7 @@
     onmouseout="document.getElementById('btnAbopt').style.fontSize='0px';
     document.getElementById('btnAbopt').style.background='url(assets/images/bird1.png)'"
             style="background: url(assets/images/bird1.png);width:240px;height:240px;font-size: 0px;" 
-            (click)="openDialog()">
+            (click)="openDialog($event)">
         Adoption
         </button>
   </div>
@@ -49,7 +49,7 @@
     onmouseout="document.getElementById('btnLost').style.fontSize='0px';
     document.getElementById('btnLost').style.background='url(assets/images/dog1.png)'"
             style="background: url(assets/images/dog1.png);width:240px;height:240px;font-size: 0px;"
-             (click)="openDialog()">
+             (click)="openDialog($event)">
             Lost
             </button>
   </div>

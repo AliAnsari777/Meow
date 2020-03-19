@@ -6,24 +6,40 @@ import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms'
 import { ConfirmMessageDialogComponent } from '../confirm-message-dialog/confirm-message-dialog.component'
 import { MatDialog } from '@angular/material/dialog';
 
+interface PostType {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-viewposts',
   templateUrl: './viewposts.component.html',
   styleUrls: ['./viewposts.component.css']
 })
 export class ViewpostsComponent implements OnInit {
-  posts: post;
 
-  constructor(private dataService: PostService, private router: Router, private formBuilder: FormBuilder, private dialog: MatDialog) {
+   
+  postType: PostType[] = [
+    { value: 'found', viewValue: 'Found' },
+    { value: 'lost', viewValue: 'Lost' },
+    { value: 'adaption', viewValue: 'Adaption' },
+    { value: 'sitting', viewValue: 'Sitting' }
+  ];
+
+  posts: post[];
+
+  constructor(private dataService: PostService, private router: Router
+    , private formBuilder: FormBuilder, private dialog: MatDialog) {
 
   }
 
   ngOnInit(): void {
-    this.getAllPosts();
+    this.getAllPosts("adaption");
   }
 
-  getAllPosts() {
-    this.dataService.getAllPosts("adaption")
+  getAllPosts(selectedPostType) {
+    console.log(selectedPostType);
+    this.dataService.getAllPosts(selectedPostType.value)
       .subscribe(data => {
         this.posts = data;
       });
@@ -42,8 +58,9 @@ export class ViewpostsComponent implements OnInit {
       if (result)
         this.dataService.deletePost(postID)
           .subscribe(data => {
-            this.getAllPosts();
+            this.getAllPosts("adaption");
           });
     });
   }
+
 }
