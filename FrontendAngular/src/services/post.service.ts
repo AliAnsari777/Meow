@@ -33,9 +33,8 @@ export class PostService {
 
   // get all post for specific user by using email
   getAllUserPosts() {
-    
     const headers = this.httpOptions.headers;
-    return this.http.get<post>(this.apiUrl + "/userposts/" + this.authService.authEmail());
+    return this.http.get<post>(this.apiUrl + "/userposts/" + this.authService.authEmail(), { headers });
   }
 
 
@@ -50,7 +49,14 @@ export class PostService {
 
   //app new post 
   addPost(post) {
-    
     return this.http.post<post>(this.apiUrl + "/", JSON.stringify(post), this.httpOptions)
+  }
+
+  //find user information who is intrested in a post to save in responders part of each post
+  addIntrestedToPost(postID, intrested){
+    console.log("2. this is service ");
+    console.log(intrested);
+    
+    return this.http.post<any>(this.apiUrl + "/" + postID,JSON.stringify(intrested), this.httpOptions);
   }
 }

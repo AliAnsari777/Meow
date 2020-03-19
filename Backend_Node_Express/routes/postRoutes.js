@@ -12,14 +12,14 @@ router.get('/', function (req, res, next) {
 // router.post('/', controller.login)
 
 //Added By AYA
-
-
 router.get('/:postType', verifyToken, postController.getAllPosts); //get all posts
 router.delete('/:id', verifyToken, postController.deletePost); //delete spacific one
 router.post('/', verifyToken, postController.addPost); //add new post
 router.get('/userposts/:email', verifyToken, postController.getPostsByUserEmail); //get posts for spacific user
-router.get('/userposts/responders/:postID', postController.getAllResponders)
-
+router.get('/userposts/responders/:postID', postController.getAllResponders)//get responders for a spacific post
 ////////////////////////////////////////////////
+
+router.post('/:id', verifyToken, postController.intrested)
+
 
 module.exports = router;
