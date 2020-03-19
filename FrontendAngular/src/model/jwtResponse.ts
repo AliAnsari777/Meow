@@ -1,6 +1,6 @@
 export class jwtResponse {
-name: String;
-email:  String;
+name: string;
+email:  string;
 token: string;
 expiresIn: string
 }

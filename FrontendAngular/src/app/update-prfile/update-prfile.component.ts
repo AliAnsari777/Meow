@@ -12,7 +12,7 @@ import { FormGroup, FormBuilder} from '@angular/forms';
 export class UpdatePrfileComponent implements OnInit {
   newForm: FormGroup;
   photo : File;
-  useremail = "ahmed@gmail.com";
+ 
 
   constructor(private userService: UserService, private formBuilder: FormBuilder) { 
     this.newForm = this.formBuilder.group({
@@ -25,7 +25,7 @@ export class UpdatePrfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.receiveUserProfile(this.useremail).subscribe(result => {
+    this.userService.receiveUserProfile().subscribe(result => {
       this.newForm.patchValue({
           name: result.name,
           email: result.email,

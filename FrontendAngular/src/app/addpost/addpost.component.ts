@@ -5,6 +5,7 @@ import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms'
 import {
   MatSnackBar, MatSnackBarConfig, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
+import { AuthService } from 'src/services/auth.service';
 
 interface PostType {
   value: string;
@@ -36,7 +37,8 @@ export class AddpostComponent implements OnInit {
 
   addExtraClass: boolean = false;
 
-  constructor(private dataService: PostService, private router: Router, private formBuilder: FormBuilder, private _snackBar: MatSnackBar) {
+  constructor(private dataService: PostService, private router: Router,
+     private formBuilder: FormBuilder, private _snackBar: MatSnackBar,private authService:AuthService) {
 
   }
 
@@ -77,6 +79,9 @@ export class AddpostComponent implements OnInit {
       Validators.required
     ]),
     petName: new FormControl('', [
+
+    ]),
+    email: new FormControl(this.authService.authEmail(), [
 
     ])
   })

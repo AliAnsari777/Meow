@@ -2,8 +2,8 @@
     <button mat-icon-button aria-label="menu" class="menu" (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-    <button mat-button (click)="logOut()">Menu 1</button>
-    <button mat-button>Menu 2</button>
+    <button mat-button (click)="logOut()">Logout</button>
+    <!-- <button mat-button>Menu 2</button>
     <button mat-button [matMenuTriggerFor]="submenu">Menu 3</button>
   
     <mat-menu #submenu="matMenu">
@@ -15,35 +15,72 @@
       <button mat-menu-item>Menu Item 1</button>
       <button mat-menu-item>Menu Item 2</button>
       <button mat-menu-item>Menu Item 3</button>
-    </mat-menu>
+    </mat-menu> -->
   
   </mat-toolbar>
   <mat-sidenav-container>
     <mat-sidenav [disableClose]="false" mode="over" #sidenav>
         <mat-nav-list>
+        
           <a
-            id="home"
-            mat-list-item
-            [routerLink]="['./']"
-            (click)="sidenav.close()"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{exact: true}"
-          >
-            <mat-icon matListAvatar>home</mat-icon>
-            <h3 matLine>Home</h3>
-            <p matLine>sample home page</p>
-          </a>
-          <a
-            id="sampleData"
+            id="services"
             mat-list-item
             [routerLink]="['./services']"
             (click)="sidenav.close()"
             routerLinkActive="active"
           >
             <mat-icon matListAvatar>grid_on</mat-icon>
-            <h3 matLine>Pets</h3>
+            <h3 matLine>Home</h3>
             <p matLine>Thanks For Caring</p>
           </a>
+          <a
+          id="viewpost"
+          mat-list-item
+          [routerLink]="['./viewpost']"
+          (click)="sidenav.close()"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}"
+        >
+          <mat-icon matListAvatar>home</mat-icon>
+          <h3 matLine>View Posts</h3>
+          <p matLine>sample home page</p>
+        </a>
+          <a
+          id="userpets"
+          mat-list-item
+          [routerLink]="['./userpets']"
+          (click)="sidenav.close()"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}"
+        >
+          <mat-icon matListAvatar>home</mat-icon>
+          <h3 matLine>My Pets</h3>
+          <p matLine>Add your pets</p>
+        </a>
+        <a
+          id="viewUserPosts"
+          mat-list-item
+          [routerLink]="['./viewUserPosts']"
+          (click)="sidenav.close()"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}"
+        >
+          <mat-icon matListAvatar>home</mat-icon>
+          <h3 matLine>My Posts</h3>
+          <p matLine>Check Responders</p>
+        </a>
+        <a
+        id="updateProfile"
+        mat-list-item
+        [routerLink]="['./updateProfile']"
+        (click)="sidenav.close()"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}"
+      >
+        <mat-icon matListAvatar>home</mat-icon>
+        <h3 matLine>Information</h3>
+        <p matLine>Update Personal Info</p>
+      </a>
         </mat-nav-list>
       </mat-sidenav>
     <mat-sidenav-content>

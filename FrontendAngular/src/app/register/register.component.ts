@@ -44,6 +44,7 @@ export class RegisterComponent implements OnInit {
   createAccount(){
   this.dataService.createUser(this.registerForm.value)
   .subscribe((data: {}) => {
+    this.router.navigate(['../login']);
   })
 }
 }
