@@ -5,6 +5,7 @@ import { post } from '../../model/post';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { ConfirmMessageDialogComponent } from '../confirm-message-dialog/confirm-message-dialog.component'
 import { MatDialog } from '@angular/material/dialog';
+import { UserService } from '../../services/user.service';
 
 interface PostType {
   value: string;
@@ -18,7 +19,7 @@ interface PostType {
 })
 export class ViewpostsComponent implements OnInit {
 
-   
+
   postType: PostType[] = [
     { value: 'found', viewValue: 'Found' },
     { value: 'lost', viewValue: 'Lost' },
@@ -28,8 +29,10 @@ export class ViewpostsComponent implements OnInit {
 
   posts: post[];
 
-  constructor(private dataService: PostService, private router: Router
-    , private formBuilder: FormBuilder, private dialog: MatDialog) {
+
+  constructor(private dataService: PostService, private router: Router, private formBuilder: FormBuilder,
+    private dialog: MatDialog, private userService: UserService) {
+
 
   }
 
@@ -49,7 +52,7 @@ export class ViewpostsComponent implements OnInit {
 
     const dialogRef = this.dialog.open(ConfirmMessageDialogComponent, {
       width: '250px',
-      data: { pet_ID: postID }
+      data: { id: postID }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -63,4 +66,30 @@ export class ViewpostsComponent implements OnInit {
     });
   }
 
+<<<<<<< HEAD
+=======
+  // first grab all information for user to send to specific post
+  intrested(postID) {
+
+    const dialogRef = this.dialog.open(ConfirmMessageDialogComponent, {
+      width: '250px',
+      data: { id: postID }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed ' + result);
+      if (result) {
+        this.userService.receiveUserProfile().subscribe(result => {
+          let intrest = { name: result.name, phone: result.phone, email: result.email };
+
+          this.dataService.addIntrestedToPost(postID, intrest).subscribe(result => {
+            console.log(result);
+          });
+        })
+      }
+    });
+
+  }
+
+>>>>>>> 0302339df4fee2c585a0fac9f3de4585e89c5969
 }

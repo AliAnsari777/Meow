@@ -1,18 +1,18 @@
 .reset-card {
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: 0px 5px 5px -1px rgba(3, 218, 198, 1),
-     0px 3px 3px 0px rgba(65, 29, 29, 0.3),
-      0px 3px 3px 0px rgba(0, 0, 0, 0.3) !important;
-background-color: lightgoldenrodyellow;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0px 5px 5px -1px rgb(255,64,129),
+   0px 3px 3px 0px rgba(65, 29, 29, 0.3),
+    0px 3px 3px 0px rgba(0, 0, 0, 0.3) !important;
+background-color: #fff;
   }
   
   .reset-header-image {
     background-image: url('../../assets//images/featured-pet.png');
     background-size: cover;
-    width: 130px;
-    height: 100px;
+    width: 75px;
+    height: 68px;
   }
   
   .reset-title {
@@ -21,6 +21,7 @@ background-color: lightgoldenrodyellow;
   
   .reset-content {
     font-size: 24px;
+    color: rgb(255,64,129);
   }
   
   .reset-actions {
@@ -32,27 +33,39 @@ background-color: lightgoldenrodyellow;
     width: 100%;
   }
   
-  
+  ::placeholder{
+    color: rgb(255,64,129);
+  } 
   
   .sign-in {
     color: #ffffff;
     font-size: 24px;
-    background-color: #6200ee;
+    background-color:rgb(255,64,129);
     width: 70px !important;
     height: 70px !important;
   }
+
+  .rest-header-image {
+    background-image: url('../../assets//images/featured-pet.png');
+    background-size: cover;
+    width: 75px;
+    height: 68px;
+  }
   
   .create-account {
-    color: #6200ee;
+    color: rgb(255,64,129);
     font-size: 24px;
   }
   
   .reset-password {
     color: #ffffff;
     font-size: 24px;
-    background-color: #6200ee;
+    background-color: rgb(255,64,129);
     width: 70px !important;
     height: 70px !important;
+  }
+  .accentColor{
+    color:rgb(255,64,129)
   }
   
 

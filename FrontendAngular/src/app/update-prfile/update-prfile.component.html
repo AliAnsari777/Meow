@@ -22,11 +22,11 @@
                 <mat-label>Phone</mat-label>
                 <input matInput formControlName="phone">
             </mat-form-field>
+
             <input #file type="file" [hidden]="true" (change)="onFileChanged($event)" accept="image/*">
-            <button mat-raised-button color="primary" (click)="file.click()">Upload Photo</button>
 
         </mat-card-content>
-        
+
         <mat-card-actions class="update-profile-actions">
             <!-- formControlName="photo" -->
             <button mat-raised-button color="accent" class="bigFont" (click)="file.click()">Upload Photo</button>
