@@ -37,7 +37,7 @@ export class ViewpostsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllPosts(this.postType);
+    this.getAllPosts("adaption");
   }
 
   getAllPosts(selectedPostType) {
