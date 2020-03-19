@@ -12,7 +12,9 @@ import { FormGroup, FormBuilder} from '@angular/forms';
 export class UpdatePrfileComponent implements OnInit {
   newForm: FormGroup;
   photo : File;
- 
+  imagePath;
+  imgURL: any;
+  message: string;
 
   constructor(private userService: UserService, private formBuilder: FormBuilder) { 
     this.newForm = this.formBuilder.group({
@@ -30,7 +32,7 @@ export class UpdatePrfileComponent implements OnInit {
           name: result.name,
           email: result.email,
           phone: result.phone,
-          userPhoto: result.userPhoto
+          userPhoto: result.userPhoto,
         }); 
     })
   }
@@ -48,5 +50,25 @@ export class UpdatePrfileComponent implements OnInit {
     formData.append("phone", this.newForm.get('phone').value);
       
     this.userService.updateProfile(formData).subscribe((data : {}) => {});
+  }
+
+  preview(files) {
+    if (files.length === 0)
+      return;
+ 
+    var mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.message = "Only images are supported.";
+      return;
+    }
+ 
+    var reader = new FileReader();
+    this.imagePath = files;
+    
+    
+    reader.readAsDataURL(files[0]); 
+    reader.onload = (_event) => { 
+      this.imgURL = reader.result; 
+    }
   }
 }

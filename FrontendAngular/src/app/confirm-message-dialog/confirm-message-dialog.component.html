@@ -1,7 +1,7 @@
-<h1 mat-dialog-title class="font-color">Delete Confirmation</h1>
+<h1 mat-dialog-title class="font-color">{{data.title}}</h1>
 <div mat-dialog-content class="font-color">
-    <!-- <p>{{data.text}}</p> -->
-    <p>Do You Wanaa Delete Me? :(</p>
+    <!-- we use data that comes form interface and it will help use to set dynamic message for every dialog box -->
+    <p>{{data.message}}</p>
 </div>
 
 <div mat-dialog-actions>

@@ -8,17 +8,20 @@ interface SelectElement {
   viewValue: string;
 }
 
+
+
 @Component({
   selector: 'app-add-pet',
   templateUrl: './add-pet.component.html',
   styleUrls: ['./add-pet.component.css']
 })
 
-
-
 export class AddPetComponent implements OnInit {
 
   registerForm: FormGroup
+  imagePath;
+  imgURL: any;
+  message: string;
 
   constructor(private userService: UserService, private formBuilder: FormBuilder, private http: HttpClient) {
     this.registerForm = this.formBuilder.group({
@@ -38,44 +41,13 @@ export class AddPetComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {  }
 
   photo: File;
 
-  // onFileChanged(event) {
-  //   this.photo = event.target.files[0]
-  // }
   onFileChanged(event) {
-    // const file = (event.target as HTMLInputElement).files[0];
-    // this.registerForm.patchValue({
-    //   photo: file
-    // });
-    // this.registerForm.get('photo').updateValueAndValidity()
-
     this.photo = <File>event.target.files[0];
   }
-
-
-
-  // uploadData = new FormData().append('myFile', this.photo, this.photo.name);
-
-
-  // registerForm = new FormGroup({
-  //   name : new FormControl('', [
-  //     Validators.required
-  //   ]),
-  //   gender : new FormControl('', [
-  //     Validators.required,
-  //   ]),
-  //   age : new FormControl('', [
-  //     Validators.required
-  //   ]),
-  //   animalType : new FormControl('', [
-  //     Validators.required
-  //   ]),
-
-  // });
 
   gender: SelectElement[] = [
     { value: 'male', viewValue: 'Male' },
@@ -104,6 +76,26 @@ export class AddPetComponent implements OnInit {
     }
 
     this.userService.addPet(formData).subscribe((data: {}) => { });
+  }
+
+  preview(files) {
+    if (files.length === 0)
+      return;
+ 
+    var mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.message = "Only images are supported.";
+      return;
+    }
+ 
+    var reader = new FileReader();
+    this.imagePath = files;
+    
+    
+    reader.readAsDataURL(files[0]); 
+    reader.onload = (_event) => { 
+      this.imgURL = reader.result; 
+    }
   }
 
 }

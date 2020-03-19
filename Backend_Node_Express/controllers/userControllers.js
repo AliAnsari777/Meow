@@ -11,9 +11,8 @@ const userModel = require('../database/userModel');
 databaseConnection.connect();
 
 module.exports.getAll = async function(req, res) {
-    
-            userModel.find({}, (err, docs) => {
-                res.json(docs);
+    userModel.find({}, (err, docs) => {
+        res.json(docs);
     })
 }
 
@@ -127,13 +126,6 @@ module.exports.addPet = async function(req, res) {
 
         res.json(result);
     })
-
-    // because this method has some depricated warning I change findOneAndUpdate to updateOne
-    // userModel.findOneAndUpdate({ email: userEmail }, { $push: { pets: req.body } }, (err, result) => {
-    //     if (err) throw err;
-
-    //     res.json(result);
-    // })
 }
 
 module.exports.updateProfile = async function(req, res) {
@@ -174,7 +166,6 @@ module.exports.findUserByEmail = async function(req, res) {
 
 //AYA
 module.exports.deletePet = async function(req, res) {
-    //  let email = "aya@gmail.com";
     let petId = req.params.id;
     userModel.updateOne({ "pets._id": petId }, {
         $pull: { pets: { _id: petId } }
