@@ -16,4 +16,9 @@ export class post {
     age: Number;
     startSittingDate: Date;
     endSittingDate: Date;
+    responder: [{
+        name: String,
+        phone: String,
+        email: String
+    }]
 }

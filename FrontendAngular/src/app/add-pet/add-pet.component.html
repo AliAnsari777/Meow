@@ -32,7 +32,7 @@
                 <mat-label>Animal Type</mat-label>
                 <mat-select formControlName="animalType" required>
                     <mat-option *ngFor="let animal of animals" [value]="animal.value">
-                        {{animal.viewValue}}
+                        <span id="ali">{{animal.viewValue}}</span>
                     </mat-option>
                 </mat-select>
             </mat-form-field>

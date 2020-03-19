@@ -17,6 +17,11 @@ let postSchema = new mongoose.Schema({
     age: Number,
     startSittingDate: Date,
     endSittingDate: Date,
+    responder: [{
+        name: String,
+        phone: String,
+        email: String
+    }]
 });
 
 const postModel = mongoose.model('Posts', postSchema);

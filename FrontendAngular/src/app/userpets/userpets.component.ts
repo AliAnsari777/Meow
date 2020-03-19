@@ -7,7 +7,7 @@ import { ConfirmMessageDialogComponent } from '../confirm-message-dialog/confirm
 import { AddPetComponent } from '../add-pet/add-pet.component';
 
 export interface DialogData {
-  pet_ID: string;
+  id: string;
 }
 
 @Component({
@@ -19,7 +19,6 @@ export interface DialogData {
 export class UserpetsComponent implements OnInit {
 
   user: user;
-  isDeleted: Boolean;
 
   constructor(private dataService: UserService, private router: Router, private dialog: MatDialog) {
 
@@ -52,7 +51,7 @@ if(data != null)
 
     const dialogRef = this.dialog.open(ConfirmMessageDialogComponent, {
       width: '250px',
-      data: { pet_ID: petID }
+      data: { id: petID }
     });
 
     dialogRef.afterClosed().subscribe(result => {

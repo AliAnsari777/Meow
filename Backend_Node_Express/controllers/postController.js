@@ -6,7 +6,6 @@ databaseConnection.connect();
 //get all posts according to post type
 module.exports.getAllPosts = async function(req, res) {
     postModel.find({ postType: req.params.postType }, function(err, postDoc) {
-        console.log(postDoc);
         res.json(postDoc);
     });
 }
@@ -32,4 +31,14 @@ module.exports.getPostsByUserEmail = async function(req, res) {
     postModel.find({ email: req.params.email }, function(err, postDoc) {
         res.json(postDoc);
     });
+}
+
+module.exports.intrested = async function(req, res) {
+    console.log("2. server function: " + req.body);
+
+    postModel.updateOne({ _id: req.params.id }, { $push: { responder: req.body } }, (err, result) => {
+        if (err) throw err;
+
+        res.json(result)
+    })
 }
