@@ -46,8 +46,10 @@ export class UserService {
 
   //AYA
   getPetsFromUserEmail() {
+    console.log(this.email);
+    
     const headers = this.httpOptions.headers;
-    return this.http.get<user>(this.apiUrl + "/userpets" + this.email, { headers });
+    return this.http.get<user>(this.apiUrl + "/userpets/" + this.email, { headers });
   }
 
   deletePet(petID) {

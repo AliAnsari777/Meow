@@ -41,10 +41,15 @@ export class UserpetsComponent implements OnInit {
   }
   getUserPets(): any {
     this.dataService.getPetsFromUserEmail().subscribe((data => {
+      console.log(data);
+      
 if(data != null)
       this.user = data;
       else
       this.user = new user();
+      
+
+      console.log(this.user);
       
     }))
   }

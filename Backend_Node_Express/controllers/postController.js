@@ -33,6 +33,8 @@ module.exports.getPostsByUserEmail = async function(req, res) {
     });
 }
 module.exports.intrested = async function(req, res) {
+    console.log("2. server function: " + req.body);
+
     postModel.updateOne({ _id: req.params.id }, { $push: { responder: req.body } }, (err, result) => {
         if (err) throw err;
 
@@ -44,7 +46,8 @@ module.exports.intrested = async function(req, res) {
 
 //get all responders to spacific post
 module.exports.getAllResponders = async function(req, res) {
-    postModel.find({ "responder._id": req.params.postID }, function(err, postDoc) {
-        res.json(postDoc);
+    postModel.findOne({ _id: req.params.postID }, function(err, postDoc) {
+        res.json(postDoc.responder);
+        console.log(postDoc.responder)
     });
 }

@@ -1,8 +1,8 @@
 export const enum Services {
-    Found = "Found",
-    Lost = "Lost",
-    Sitting = "Sitting",
-  Adobting= "Adobting"
+  btnFound = "found",
+    btnLost = "lost",
+    bntSitting = "sitting",
+    btnAbopt= "adaption"
   }
   
   

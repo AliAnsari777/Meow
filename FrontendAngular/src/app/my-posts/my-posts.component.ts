@@ -42,4 +42,14 @@ export class MyPostsComponent implements OnInit {
           });
     });
   }
+
+  getAllResponders(postID) {
+    console.log(postID);
+    
+    this.postService.getAllResponders(postID).subscribe(data => {
+      console.log(data);
+      
+      //this.posts = data;
+    });
+  }
 }
