@@ -3,16 +3,16 @@
         <mat-card class="post-card col-md-2 addMargin" *ngFor="let post of posts">
             <mat-card-header>
                 <div mat-card-avatar class="example-header-image"></div>
-                <mat-card-title style="color: rgb(5, 140, 218);"> {{post.email}}</mat-card-title>
-                <mat-card-subtitle style="color: rgb(5, 140, 218);"> {{post.city}} </mat-card-subtitle>
+                <mat-card-title style="color: rgb(255,64,129);"> {{post.email}}</mat-card-title>
+                <mat-card-subtitle style="color: rgb(255,64,129);"> {{post.city}} </mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
-                <p style="color: rgb(5, 140, 218);">
+                <p style="color: rgb(255,64,129);">
                     {{post.text}}
                 </p>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-raised-button color="accent">Back</button>
+                <button mat-raised-button color="accent">View All Responders</button>
                 <button mat-raised-button color="accent" (click)="deletePost(post._id)">Delete</button>
             </mat-card-actions>
         </mat-card>

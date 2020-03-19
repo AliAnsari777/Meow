@@ -1,23 +1,23 @@
 <mat-card class="register-card">
     <mat-card-header>
         <div mat-card-avatar class="register-header-image"></div>
-        <mat-card-title class="register-title">MEWO</mat-card-title>
-        <mat-card-subtitle class="register-content">Add new pet</mat-card-subtitle>
+        <mat-card-title class="register-title accentColor">MEWO</mat-card-title>
+        <mat-card-subtitle class="register-content accentColor">Add new pet</mat-card-subtitle>
     </mat-card-header>
-    <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+
     <form class="register-form" [formGroup]="registerForm">
         <mat-card-content class="register-content">
 
             <mat-form-field class="register-full-width">
                 <mat-label>Name</mat-label>
-                <input matInput placeholder="Name" formControlName="name" required>
+                <input matInput formControlName="name">
             </mat-form-field>
 
 
             <mat-form-field class="register-full-width">
                 <mat-label>Gender</mat-label>
-                <mat-select formControlName="gender" required>
-                    <mat-option *ngFor="let gen of gender" [value]="gen.value">
+                <mat-select formControlName="gender">
+                    <mat-option style="color: rgb(255,64,129)" *ngFor="let gen of gender" [value]="gen.value">
                         {{gen.viewValue}}
                     </mat-option>
                 </mat-select>
@@ -25,26 +25,26 @@
 
             <mat-form-field class="register-full-width">
                 <mat-label>Age</mat-label>
-                <input matInput placeholder="Age" formControlName="age" required>
+                <input matInput formControlName="age">
             </mat-form-field>
 
             <mat-form-field class="register-full-width">
                 <mat-label>Animal Type</mat-label>
-                <mat-select formControlName="animalType" required>
-                    <mat-option *ngFor="let animal of animals" [value]="animal.value">
-                        <span id="ali">{{animal.viewValue}}</span>
+                <mat-select formControlName="animalType">
+                    <mat-option *ngFor="let animal of animals" [value]="animal.value" style="color: rgb(255,64,129)">
+                        {{animal.viewValue}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
 
             <input #file type="file" [hidden]="true" (change)="onFileChanged($event)" accept="image/*">
-            <!-- formControlName="photo" -->
-            <button mat-raised-button color="primary" (click)="file.click()">Upload Photo</button>
+
 
         </mat-card-content>
 
         <mat-card-actions class="register-actions">
-            <button mat-button class="sign-in" type="submit" [disabled]="!registerForm.valid" (click)="addNewPet()">Add Pet</button>
+            <button mat-raised-button color="accent" (click)="file.click()">Upload Photo</button>
+            <button mat-raised-button color="accent" class="bigFont" [disabled]="!registerForm.valid" (click)="addNewPet()">Add Pet</button>
         </mat-card-actions>
     </form>
 </mat-card>

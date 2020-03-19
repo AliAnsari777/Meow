@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/services/post.service';
 import { post } from 'src/model/post';
+import { ConfirmMessageDialogComponent } from '../confirm-message-dialog/confirm-message-dialog.component'
+import { MatDialog } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-my-posts',
@@ -10,7 +13,7 @@ import { post } from 'src/model/post';
 export class MyPostsComponent implements OnInit {
   posts: post;
 
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getAllPosts();
@@ -24,12 +27,19 @@ export class MyPostsComponent implements OnInit {
   }
 
   deletePost(postID) {
-    this.postService.deletePost(postID)
-      .subscribe(data => {
-        this.getAllPosts();
-      });
+    const dialogRef = this.dialog.open(ConfirmMessageDialogComponent, {
+      width: '250px',
+      data: { pet_ID: postID }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed ' + result);
+
+      if (result)
+        this.postService.deletePost(postID)
+          .subscribe(data => {
+            this.getAllPosts();
+          });
+    });
   }
-
-  backtoLogin() {}
-
 }

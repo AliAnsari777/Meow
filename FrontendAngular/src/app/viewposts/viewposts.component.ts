@@ -16,7 +16,7 @@ export class ViewpostsComponent implements OnInit {
   posts: post;
 
   constructor(private dataService: PostService, private router: Router, private formBuilder: FormBuilder,
-     private dialog: MatDialog, private userService: UserService) {
+    private dialog: MatDialog, private userService: UserService) {
 
   }
 
@@ -30,7 +30,6 @@ export class ViewpostsComponent implements OnInit {
         this.posts = data;
       });
   }
-
 
   deletePost(postID) {
 
@@ -50,27 +49,27 @@ export class ViewpostsComponent implements OnInit {
     });
   }
 
-// first grab all information for user to send to specific post
-intrested(postID){
+  // first grab all information for user to send to specific post
+  intrested(postID) {
 
-  const dialogRef = this.dialog.open(ConfirmMessageDialogComponent, {
-    width: '250px',
-    data: { id: postID }
-  });
+    const dialogRef = this.dialog.open(ConfirmMessageDialogComponent, {
+      width: '250px',
+      data: { id: postID }
+    });
 
-  dialogRef.afterClosed().subscribe(result => {
-    console.log('The dialog was closed ' + result);
-    if(result){
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed ' + result);
+      if (result) {
         this.userService.receiveUserProfile().subscribe(result => {
-        let intrest = {name: result.name, phone: result.phone, email: result.email};
-        
-        this.dataService.addIntrestedToPost(postID, intrest).subscribe(result => {
-          console.log(result);
-        });
-      })
-    }
-  });
-    
-}
+          let intrest = { name: result.name, phone: result.phone, email: result.email };
+
+          this.dataService.addIntrestedToPost(postID, intrest).subscribe(result => {
+            console.log(result);
+          });
+        })
+      }
+    });
+
+  }
 
 }

@@ -6,6 +6,7 @@ databaseConnection.connect();
 //get all posts according to post type
 module.exports.getAllPosts = async function(req, res) {
     postModel.find({ postType: req.params.postType }, function(err, postDoc) {
+        console.log(postDoc);
         res.json(postDoc);
     });
 }
@@ -32,7 +33,6 @@ module.exports.getPostsByUserEmail = async function(req, res) {
         res.json(postDoc);
     });
 }
-
 module.exports.intrested = async function(req, res) {
     console.log("2. server function: " + req.body);
 
@@ -41,4 +41,15 @@ module.exports.intrested = async function(req, res) {
 
         res.json(result)
     })
+}
+
+//////////////////////////////////////////////////////////////////////
+
+//get all responders to spacific post
+module.exports.getAllResponders = async function(req, res) {
+    postModel.find({ "responder._id": req.params.postID }, function(err, postDoc) {
+        res.json(postDoc);
+        console.log("+++++++++++++++++++++")
+        console.log(postDoc)
+    });
 }
