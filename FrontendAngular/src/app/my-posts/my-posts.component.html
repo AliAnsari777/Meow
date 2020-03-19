@@ -11,8 +11,8 @@
                     {{post.text}}
                 </p>
             </mat-card-content>
-            <mat-card-actions>
-                <button mat-raised-button color="accent">View All Responders</button>
+            <mat-card-actions> 
+                <button mat-raised-button color="accent" (click)="getAllResponders(post._id)">View All Responders</button>
                 <button mat-raised-button color="accent" (click)="deletePost(post._id)">Delete</button>
             </mat-card-actions>
         </mat-card>

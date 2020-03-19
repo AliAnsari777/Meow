@@ -15,7 +15,7 @@ export class PostService {
       //'Authorization': 'passFromLocalStorage'
     })
   };
-  constructor(private http: HttpClient,private authService:AuthService) { }
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
   //get spacific post by emil
   getPostsByEmail(email) {
@@ -25,7 +25,7 @@ export class PostService {
 
   // get all posts
   getAllPosts(postType) {
-  
+
     const headers = this.httpOptions.headers;
     return this.http.get<post>(this.apiUrl + "/" + postType, { headers });
   }
@@ -41,7 +41,7 @@ export class PostService {
   // delete a spacific post
   deletePost(postId) {
     console.log(this.apiUrl + "/" + postId);
-    
+
     console.log("delete post in service layer")
     const headers = this.httpOptions.headers;
     return this.http.delete(this.apiUrl + "/" + postId, { headers });
@@ -53,10 +53,15 @@ export class PostService {
   }
 
   //find user information who is intrested in a post to save in responders part of each post
-  addIntrestedToPost(postID, intrested){
+  addIntrestedToPost(postID, intrested) {
     console.log("2. this is service ");
     console.log(intrested);
-    
-    return this.http.post<any>(this.apiUrl + "/" + postID,JSON.stringify(intrested), this.httpOptions);
+
+    return this.http.post<any>(this.apiUrl + "/" + postID, JSON.stringify(intrested), this.httpOptions);
+  }
+
+  getAllResponders(postID) {
+    const headers = this.httpOptions.headers;
+    return this.http.get<any>(this.apiUrl + "/userposts/responders/" + postID, { headers });
   }
 }
