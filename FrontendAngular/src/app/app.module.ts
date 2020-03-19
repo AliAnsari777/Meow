@@ -53,6 +53,7 @@ import { authInterceptorProviders } from '../services/http-token-interceptor.ser
 import { UserpetsComponent } from './userpets/userpets.component';
 import { ConfirmMessageDialogComponent } from './confirm-message-dialog/confirm-message-dialog.component';
 import { UpdatePrfileComponent } from './update-prfile/update-prfile.component';
+import { InterstedDetailsComponent } from './intersted-details/intersted-details.component';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { UpdatePrfileComponent } from './update-prfile/update-prfile.component';
     PagenotfoundComponent,
     UserpetsComponent,
     ConfirmMessageDialogComponent,
-    UpdatePrfileComponent
+    UpdatePrfileComponent,
+    InterstedDetailsComponent
   ],
   imports: [
     BrowserModule,

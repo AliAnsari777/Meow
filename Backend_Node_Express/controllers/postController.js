@@ -48,7 +48,15 @@ module.exports.intrested = async function (req, res) {
 //get all responders to spacific post
 module.exports.getAllResponders = async function (req, res) {
     postModel.findOne({ _id: req.params.postID }, function (err, postDoc) {
+        //if(postDoc.hasOwnProperty('responder')){
         res.json(postDoc.responder);
         console.log(postDoc.responder)
+        console.log("before");
+        
+    // }
+    // else{
+    //     console.log("less");
+        
+    //}
     });
 }

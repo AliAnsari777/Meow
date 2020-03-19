@@ -3,6 +3,7 @@ import { PostService } from 'src/services/post.service';
 import { post } from 'src/model/post';
 import { ConfirmMessageDialogComponent } from '../confirm-message-dialog/confirm-message-dialog.component'
 import { MatDialog } from '@angular/material/dialog';
+import { InterstedDetailsComponent } from '../intersted-details/intersted-details.component';
 
 
 @Component({
@@ -43,13 +44,34 @@ export class MyPostsComponent implements OnInit {
     });
   }
 
-  getAllResponders(postID) {
-    console.log(postID);
+  async getAllResponders($event) {
+    const postId = $event.toElement.id;
+    console.log(postId);
     
-    this.postService.getAllResponders(postID).subscribe(data => {
+    await this.postService.getAllResponders(postId).subscribe(data => {
       console.log(data);
       
-      //this.posts = data;
+      const dialogRef = this.dialog.open(InterstedDetailsComponent, {
+        autoFocus: false,
+        maxHeight: '550px',
+        //width: '250px',
+        data: data
+      });
+      
+     
+      
+      dialogRef.afterClosed().subscribe(
+         result => {
+         console.log('The dialog was closed');
+
+      }
+        );
     });
   }
+
+  openDialog($event): void {
+
+   
+      
+     }
 }

@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { UpdatePrfileComponent } from './update-prfile/update-prfile.component';
 import { MyPostsComponent } from './my-posts/my-posts.component';
+import { InterstedDetailsComponent } from './intersted-details/intersted-details.component';
 
 
 const routes: Routes = [
@@ -27,7 +28,8 @@ const routes: Routes = [
   { path: 'viewpost', component: ViewpostsComponent }, 
   { path: 'viewUserPosts', component: MyPostsComponent},
   { path: 'userpets', component: UserpetsComponent },
-  { path: 'updateProfile', component:UpdatePrfileComponent}
+  { path: 'updateProfile', component:UpdatePrfileComponent},
+  { path: 'intserstedDetails', component: InterstedDetailsComponent }
      
   ]
 },

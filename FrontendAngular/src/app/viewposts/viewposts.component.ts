@@ -66,8 +66,6 @@ export class ViewpostsComponent implements OnInit {
     });
   }
 
-<<<<<<< HEAD
-=======
   // first grab all information for user to send to specific post
   intrested(postID) {
 
@@ -91,5 +89,4 @@ export class ViewpostsComponent implements OnInit {
 
   }
 
->>>>>>> 0302339df4fee2c585a0fac9f3de4585e89c5969
 }
