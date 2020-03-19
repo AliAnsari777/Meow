@@ -17,7 +17,7 @@ export class MyPostsComponent implements OnInit {
   }
 
   getAllPosts() {
-    this.postService.getAllUserPosts("alex@mum.edu")
+    this.postService.getAllUserPosts()
       .subscribe(data => {
         this.posts = data;
       });

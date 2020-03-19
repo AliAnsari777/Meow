@@ -13,19 +13,24 @@ const { testRequest } = require('../middleware/testRequest');
 //     res.send('respond with a resource');
 // });
 router.get('/getAll', verifyToken, controller.getAll);
-router.get('/login', controller.login);
+router.post('/login', controller.login);
 router.get('/resetPassword', controller.resetPassword);
 router.post('/', controller.signup);
 
+router.post('/addPet/:des/:email', verifyToken,uploadPhoto.single('photo'), controller.addPet);
+router.put('/editProfile/:email', verifyToken,controller.updateProfile);
+
+
 //ALI
-router.post('/addPet/:des/:email', uploadPhoto.single('photo'), controller.addPet);
-router.put('/editProfile/:des/:email', uploadPhoto.single('userPhoto'), controller.updateProfile);
-router.get('/:email', controller.findUserByEmail);
-router.get('/findProfile/:email', controller.findUserProfile);
+router.post('/addPet/:des/:email', verifyToken,uploadPhoto.single('photo'), controller.addPet);
+router.put('/editProfile/:des/:email', verifyToken,uploadPhoto.single('userPhoto'), controller.updateProfile);
+router.get('/:email',verifyToken, controller.findUserByEmail);
+router.get('/findProfile/:email', verifyToken,controller.findUserProfile);
 
 //AYA
-router.get('/:email', controller.findUserByEmail);
-router.get('/userpets/:email', controller.findUserByEmail);
-router.delete('/userpets/:id', controller.deletePet);
+
+router.get('/:email', verifyToken,controller.findUserByEmail);
+router.get('/userpets/:email',verifyToken, controller.findUserByEmail);
+router.delete('/userpets/:id',verifyToken, controller.deletePet);
 
 module.exports = router;

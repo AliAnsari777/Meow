@@ -5,6 +5,7 @@ import { user } from '../model/user';
 import { pet } from '../model/pet';
 import { profile } from '../model/profile';
 import { EmailValidator } from '@angular/forms';
+import { AuthService } from './auth.service';
 
 
 @Injectable({
@@ -17,15 +18,14 @@ export class UserService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
-      //'Authorization': 'passFromLocalStorage'
     })
   };
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private authService:AuthService) {
 
   }
 
   // retrive email from local storage
-  email = "aya.zaki.moh@gmail.com";
+  email = this.authService.authEmail();
 
   createUser(user): Observable<user> {
     return this.http.post<user>(this.apiUrl + "/", JSON.stringify(user), this.httpOptions)
@@ -35,8 +35,8 @@ export class UserService {
    return this.http.post<pet>(this.apiUrl+"/addPet/0/" + this.email, pet);
  }
 
- receiveUserProfile(email): Observable<user>{
-  return this.http.get<user>(this.apiUrl+ "/findProfile/" + email)
+ receiveUserProfile(): Observable<user>{
+  return this.http.get<user>(this.apiUrl+ "/findProfile/" + this.email)
  }
 
  updateProfile(user): Observable<profile>{
@@ -46,9 +46,8 @@ export class UserService {
 
   //AYA
   getPetsFromUserEmail() {
-    let email = "/aya.zaki.moh@gmail.com";
     const headers = this.httpOptions.headers;
-    return this.http.get<user>(this.apiUrl + "/userpets" + email, { headers });
+    return this.http.get<user>(this.apiUrl + "/userpets" + this.email, { headers });
   }
 
   deletePet(petID) {

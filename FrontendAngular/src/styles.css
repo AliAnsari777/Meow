@@ -5,8 +5,10 @@ body{
     margin: 0;
 }
 *{
-    font-family: 'Indie Flower', cursive;
-font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Gochi Hand', cursive;
+
+    /* font-family: 'Indie Flower', cursive;
+font-family: 'Barlow Condensed', sans-serif; */
 }
 
 /* .mat-form-field-infix{

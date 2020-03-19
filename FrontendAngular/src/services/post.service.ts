@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { post } from '../model/post';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class PostService {
       //'Authorization': 'passFromLocalStorage'
     })
   };
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private authService:AuthService) { }
 
   //get spacific post by emil
   getPostsByEmail(email) {
@@ -24,18 +25,17 @@ export class PostService {
 
   // get all posts
   getAllPosts(postType) {
-    postType = "adaption";
+  
     const headers = this.httpOptions.headers;
     return this.http.get<post>(this.apiUrl + "/" + postType, { headers });
   }
 
 
   // get all post for specific user by using email
-  getAllUserPosts(userEmail) {
-    console.log("1.post service : " + userEmail);
+  getAllUserPosts() {
     
     const headers = this.httpOptions.headers;
-    return this.http.get<post>(this.apiUrl + "/userposts/" + userEmail);
+    return this.http.get<post>(this.apiUrl + "/userposts/" + this.authService.authEmail());
   }
 
 
@@ -50,6 +50,7 @@ export class PostService {
 
   //app new post 
   addPost(post) {
+    
     return this.http.post<post>(this.apiUrl + "/", JSON.stringify(post), this.httpOptions)
   }
 }

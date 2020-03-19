@@ -1,1 +1,56 @@
-<p>services works!</p>
+
+<div class="row" >
+  <div class="col-md-6" style="text-align: right;">
+    <button id="bntSitting" 
+            onmouseover="document.getElementById('bntSitting').style.fontSize='50px';
+    document.getElementById('bntSitting').style.color= '#ff4081';
+    document.getElementById('bntSitting').style.background='url(assets/images/cat2.png)';
+    document.getElementById('bntSitting').className='swing largeFont'"
+    onmouseout="document.getElementById('bntSitting').style.fontSize='0px';
+    document.getElementById('bntSitting').style.background='url(assets/images/cat1.png)'"
+            style="background: url(assets/images/cat1.png);width:240px;height:240px;font-size: 0px;"
+            (click)="openDialog()">
+      Sitting
+    </button>
+  </div>
+  <div class="col-md-6">
+    <button id="btnFound"
+         onmouseover="document.getElementById('btnFound').style.fontSize='50px';
+    document.getElementById('btnFound').style.color= '#ff4081';
+    document.getElementById('btnFound').style.background='url(assets/images/rabbit2.png)';
+    document.getElementById('btnFound').className='swing largeFont'"
+    onmouseout="document.getElementById('btnFound').style.fontSize='0px';
+    document.getElementById('btnFound').style.background='url(assets/images/rabbit1.png)'"
+            style="background: url(assets/images/rabbit1.png);width:240px;height:240px;font-size: 0px;"
+             (click)="openDialog()">
+            Found
+            </button>
+  </div>
+</div>
+<div class="row" >
+  <div class="col-md-6" style="text-align: right;">
+    <button id="btnAbopt"
+         onmouseover="document.getElementById('btnAbopt').style.fontSize='50px';
+    document.getElementById('btnAbopt').style.color= '#ff4081';
+    document.getElementById('btnAbopt').style.background='url(assets/images/bird2.png)';
+    document.getElementById('btnAbopt').className='swing largeFont'"
+    onmouseout="document.getElementById('btnAbopt').style.fontSize='0px';
+    document.getElementById('btnAbopt').style.background='url(assets/images/bird1.png)'"
+            style="background: url(assets/images/bird1.png);width:240px;height:240px;font-size: 0px;" 
+            (click)="openDialog()">
+        Adoption
+        </button>
+  </div>
+  <div class="col-md-6">
+    <button id="btnLost" onmouseover="document.getElementById('btnLost').style.fontSize='50px';
+    document.getElementById('btnLost').style.color= '#ff4081';
+    document.getElementById('btnLost').style.background='url(assets/images/dog2.png)';
+    document.getElementById('btnLost').className='swing largeFont'"
+    onmouseout="document.getElementById('btnLost').style.fontSize='0px';
+    document.getElementById('btnLost').style.background='url(assets/images/dog1.png)'"
+            style="background: url(assets/images/dog1.png);width:240px;height:240px;font-size: 0px;"
+             (click)="openDialog()">
+            Lost
+            </button>
+  </div>
+</div>

@@ -23,7 +23,7 @@ export class ViewpostsComponent implements OnInit {
   }
 
   getAllPosts() {
-    this.dataService.getAllPosts("")
+    this.dataService.getAllPosts("adaption")
       .subscribe(data => {
         this.posts = data;
       });
