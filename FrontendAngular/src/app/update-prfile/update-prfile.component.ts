@@ -19,7 +19,7 @@ export class UpdatePrfileComponent implements OnInit {
       name: [''],
       email: [''],
       phone: [''],
-      userPhoto:[null]
+      userPhoto:['']
     })
     this.newForm.controls['email'].disable();
   }
