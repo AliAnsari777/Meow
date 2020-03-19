@@ -12,7 +12,7 @@ background-color: #fff;
   }
   ::placeholder{
     color: rgb(255,64,129);
-  }
+  } 
   mat-label {
     color: rgb(255,64,129);
   }

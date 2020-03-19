@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
+import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { UserService } from '../../services/user.service'
 import { HttpClient } from '@angular/common/http';
 
@@ -18,22 +18,30 @@ interface SelectElement {
 
 export class AddPetComponent implements OnInit {
 
-  registerForm : FormGroup
+  registerForm: FormGroup
 
-  constructor(private userService: UserService,private formBuilder: FormBuilder,private http:HttpClient) {
+  constructor(private userService: UserService, private formBuilder: FormBuilder, private http: HttpClient) {
     this.registerForm = this.formBuilder.group({
-      name: [''],
+      name: new FormControl('', [
+        Validators.required
+      ]),
       photo: [null],
-      gender:[''],
-      age:[''],
-      animalType:['']
+      gender: new FormControl('', [
+        Validators.required
+      ]),
+      age: new FormControl('', [
+        Validators.required
+      ]),
+      animalType: new FormControl('', [
+        Validators.required
+      ])
     })
-   }
+  }
 
   ngOnInit(): void {
   }
 
-  photo : File;
+  photo: File;
 
   // onFileChanged(event) {
   //   this.photo = event.target.files[0]
@@ -51,7 +59,7 @@ export class AddPetComponent implements OnInit {
 
 
   // uploadData = new FormData().append('myFile', this.photo, this.photo.name);
-   
+
 
   // registerForm = new FormGroup({
   //   name : new FormControl('', [
@@ -66,24 +74,24 @@ export class AddPetComponent implements OnInit {
   //   animalType : new FormControl('', [
   //     Validators.required
   //   ]),
-    
+
   // });
- 
+
   gender: SelectElement[] = [
-    {value: 'male', viewValue: 'Male'},
-    {value: 'female', viewValue: 'Female'},
+    { value: 'male', viewValue: 'Male' },
+    { value: 'female', viewValue: 'Female' },
   ];
 
   animals: SelectElement[] = [
-    {value: 'cat', viewValue: 'Cat'},
-    {value: 'dog', viewValue: 'Dog'},
-    {value: 'fish', viewValue: 'Fish'},
-    {value: 'bird', viewValue: 'Bird'},
-    {value: 'rabbit', viewValue: 'Rabbit'},
+    { value: 'cat', viewValue: 'Cat' },
+    { value: 'dog', viewValue: 'Dog' },
+    { value: 'fish', viewValue: 'Fish' },
+    { value: 'bird', viewValue: 'Bird' },
+    { value: 'rabbit', viewValue: 'Rabbit' },
   ]
 
 
-  addNewPet(){
+  addNewPet() {
     var formData: any = new FormData();
     formData.append("name", this.registerForm.get('name').value);
     formData.append("photo", this.photo);
@@ -92,10 +100,10 @@ export class AddPetComponent implements OnInit {
     formData.append("gender", this.registerForm.get('gender').value);
 
     for (var pair of formData.entries()) {
-      console.log(pair[0]+ ' - ' + pair[1]); 
-    }  
+      console.log(pair[0] + ' - ' + pair[1]);
+    }
 
-    this.userService.addPet(formData).subscribe((data : {}) => {});
+    this.userService.addPet(formData).subscribe((data: {}) => { });
   }
 
 }

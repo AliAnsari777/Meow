@@ -28,22 +28,4 @@ export class ViewpostsComponent implements OnInit {
         this.posts = data;
       });
   }
-
-  deletePost(postID) {
-
-    const dialogRef = this.dialog.open(ConfirmMessageDialogComponent, {
-      width: '250px',
-      data: { pet_ID: postID }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed ' + result);
-
-      if (result)
-        this.dataService.deletePost(postID)
-          .subscribe(data => {
-            this.getAllPosts();
-          });
-    });
-  }
 }
