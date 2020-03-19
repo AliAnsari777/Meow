@@ -13,7 +13,6 @@ module.exports.getAllPosts = async function(req, res) {
 
 //delete post by ID
 module.exports.deletePost = async function(req, res) {
-
     postModel.deleteOne({ _id: req.params.id }, function(err, postDoc) {
         if (err) return handleError(err);
         res.json(postDoc);
@@ -34,8 +33,6 @@ module.exports.getPostsByUserEmail = async function(req, res) {
     });
 }
 module.exports.intrested = async function(req, res) {
-    console.log("2. server function: " + req.body);
-
     postModel.updateOne({ _id: req.params.id }, { $push: { responder: req.body } }, (err, result) => {
         if (err) throw err;
 
@@ -49,7 +46,5 @@ module.exports.intrested = async function(req, res) {
 module.exports.getAllResponders = async function(req, res) {
     postModel.find({ "responder._id": req.params.postID }, function(err, postDoc) {
         res.json(postDoc);
-        console.log("+++++++++++++++++++++")
-        console.log(postDoc)
     });
 }

@@ -8,6 +8,8 @@ import { AddPetComponent } from '../add-pet/add-pet.component';
 
 export interface DialogData {
   id: string;
+  title: string;
+  message: string;
 }
 
 @Component({
@@ -51,7 +53,7 @@ if(data != null)
 
     const dialogRef = this.dialog.open(ConfirmMessageDialogComponent, {
       width: '250px',
-      data: { id: petID }
+      data: { id: petID, title:"Delete Confirmation", message:"Do You Wanaa Delete Me? :(" }
     });
 
     dialogRef.afterClosed().subscribe(result => {

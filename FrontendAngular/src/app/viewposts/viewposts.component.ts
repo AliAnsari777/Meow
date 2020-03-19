@@ -35,7 +35,8 @@ export class ViewpostsComponent implements OnInit {
 
     const dialogRef = this.dialog.open(ConfirmMessageDialogComponent, {
       width: '250px',
-      data: { id: postID }
+      // "data" is a interface that we injected in ts file of dialog box componet and it has three attributes
+      data: { id: postID, title:"Delete Confirmation", message:"Do You Wanaa Delete Me? :(" }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -54,7 +55,7 @@ export class ViewpostsComponent implements OnInit {
 
     const dialogRef = this.dialog.open(ConfirmMessageDialogComponent, {
       width: '250px',
-      data: { id: postID }
+      data: { id: postID, title:"Intrest Confirmation", message:"Are you intrested?" }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -69,7 +70,5 @@ export class ViewpostsComponent implements OnInit {
         })
       }
     });
-
   }
-
 }

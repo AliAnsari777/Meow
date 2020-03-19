@@ -23,8 +23,8 @@
                 <input matInput formControlName="phone">
             </mat-form-field>
 
-            <input #file type="file" [hidden]="true" (change)="onFileChanged($event)" accept="image/*">
-
+            <input #file type="file" [hidden]="true" (change)="onFileChanged($event); preview(file.files)" accept="image/*">
+            <img style="margin-left:2%" [src]="imgURL" height="200" width="350" *ngIf="imgURL">
         </mat-card-content>
 
         <mat-card-actions class="update-profile-actions">
