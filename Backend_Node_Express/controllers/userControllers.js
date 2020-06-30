@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const nodeoutlook = require('nodejs-nodemailer-outlook');
 var generator = require('generate-password');
 
