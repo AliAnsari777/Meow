@@ -1,0 +1,59 @@
+<div fxLayout="row">
+    <div class="row" style="margin: 20px 20px 0px;
+    border: black 1px solid;">
+        <div class="col-md-3">
+            <mat-form-field class="add-post-full-width addMargin">
+                <mat-label>Post Type</mat-label>
+                <mat-select (selectionChange)="getAllPosts($event)"  >
+                    <!-- formControlName="postType" -->
+                    <mat-option *ngFor="let type of postType" [value]="type.value">
+                        {{type.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="col-md-3">
+            <mat-form-field class="add-post-full-width addMargin">
+                <mat-label>State</mat-label>
+                <input matInput placeholder="State">
+                <!-- formControlName="City" -->
+            </mat-form-field>
+        </div>
+        <div class="col-md-3">
+            <mat-form-field class="add-post-full-width addMargin">
+                <mat-label>City</mat-label>
+                <input matInput placeholder="City" >
+                <!-- formControlName="City" -->
+            </mat-form-field>
+        </div>
+        <div class="col-md-3">
+            <mat-form-field class="add-post-full-width addMargin">
+                <mat-label>Zip Code</mat-label>
+                <input matInput placeholder="ZipCode" >
+                <!-- formControlName="ZipCode" -->
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row" style="padding-left: 20px;">
+        <mat-card class="post-card col-md-2 addMargin" *ngFor="let post of posts">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title style="color: rgb(255,64,129);"> {{post.petName}}</mat-card-title>
+                <mat-card-subtitle style="color: rgb(255,64,129);"> {{post.gender}} </mat-card-subtitle>
+            </mat-card-header>
+            <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+            <mat-card-content>
+                <p style="color: rgb(255,64,129);">
+                    {{post.text}}
+
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="accent" (click)="deletePost(post._id)">Delete</button>
+                <button mat-raised-button color="accent" (click)="intrested(post._id)">Intrested</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+
+</div>

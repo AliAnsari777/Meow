@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
 
 let postSchema = new mongoose.Schema({
+    email: String,
     text: { type: String, required: true },
     postDate: Date,
     status: { type: Boolean, required: true },
     postType: { type: String, required: true },
+    petName: String,
     petType: String,
     photo: String,
     gender: String,
@@ -15,6 +17,11 @@ let postSchema = new mongoose.Schema({
     age: Number,
     startSittingDate: Date,
     endSittingDate: Date,
+    responder: [{
+        name: String,
+        phone: String,
+        email: String
+    }]
 });
 
 const postModel = mongoose.model('Posts', postSchema);

@@ -1,0 +1,45 @@
+.add-post-card { 
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0px 5px 5px -1px rgb(255,64,129),
+     0px 3px 3px 0px rgba(65, 29, 29, 0.3),
+      0px 3px 3px 0px rgba(0, 0, 0, 0.3) !important;
+background-color: #fff;
+    }
+  .accentColor{
+    color:rgb(255,64,129)
+  }
+  ::placeholder{
+    color: rgb(255,64,129);
+  } 
+  mat-label {
+    color: rgb(255,64,129);
+  }
+  .bigFont{
+    font-size: 24px;
+  }
+  .add-post-header-image {
+    background-image: url('../../assets//images/featured-pet.png');
+    background-size: cover;
+    width: 75px;
+    height: 68px;
+  }
+  
+  .add-post-title {
+    font-size: 40px;
+  }
+  
+  .add-post-content {
+    font-size: 24px;
+  }
+  
+  .add-post-actions {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .add-post-full-width {
+    width: 100%;
+  }
+  

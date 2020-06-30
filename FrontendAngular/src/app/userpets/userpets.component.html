@@ -1,0 +1,36 @@
+<div class="row" >
+    <div class="col-md-12" style="text-align: center;">
+      <button id="bntSitting" 
+              onmouseover="document.getElementById('bntSitting').style.fontSize='50px';
+      document.getElementById('bntSitting').style.color= '#ff4081';
+      document.getElementById('bntSitting').style.background='url(assets/images/cat2.png)';
+      document.getElementById('bntSitting').className='swing largeFont'"
+      onmouseout="document.getElementById('bntSitting').style.fontSize='0px';
+      document.getElementById('bntSitting').style.background='url(assets/images/cat1.png)'"
+              style="background: url(assets/images/cat1.png);width:240px;height:240px;font-size: 0px;"
+              (click)="openDialog()">
+        Sitting
+      </button>
+      </div>
+</div>
+<div fxLayout="row">
+    <div class="row" style="padding-left: 40px;">
+        <mat-card class="pet-card col-md-2 addMargin" *ngFor ="let pet of user.pets">
+            <mat-card-header>
+                <div mat-card-avatar class="user-pet-header-image"></div>
+                <mat-card-title class="labelStyle"> {{pet.name}}</mat-card-title>
+                <mat-card-subtitle class="labelStyle"> {{pet.gender}} </mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content>
+                <p style="color: rgb(255,64,129);">
+
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="accent" (click)="deletePet(pet._id)">Delete</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+
+</div>
