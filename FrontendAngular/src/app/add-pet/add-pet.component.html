@@ -1,0 +1,49 @@
+<mat-card class="register-card">
+    <mat-card-header>
+        <div mat-card-avatar class="register-header-image"></div>
+        <mat-card-title class="register-title accentColor">MEWO</mat-card-title>
+        <mat-card-subtitle class="register-content accentColor">Add new pet</mat-card-subtitle>
+    </mat-card-header>
+
+    <form class="register-form" [formGroup]="registerForm">
+        <mat-card-content class="register-content">
+
+            <mat-form-field class="register-full-width">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name">
+            </mat-form-field>
+
+
+            <mat-form-field class="register-full-width">
+                <mat-label>Gender</mat-label>
+                <mat-select formControlName="gender">
+                    <mat-option style="color: rgb(255,64,129)" *ngFor="let gen of gender" [value]="gen.value">
+                        {{gen.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="register-full-width">
+                <mat-label>Age</mat-label>
+                <input matInput formControlName="age">
+            </mat-form-field>
+
+            <mat-form-field class="register-full-width">
+                <mat-label>Animal Type</mat-label>
+                <mat-select formControlName="animalType">
+                    <mat-option *ngFor="let animal of animals" [value]="animal.value" style="color: rgb(255,64,129)">
+                        {{animal.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <input #file type="file" [hidden]="true" (change)="onFileChanged($event); preview(file.files)" accept="image/*">
+            <img style="margin-left:18%" [src]="imgURL" height="200" width="350" *ngIf="imgURL">
+        </mat-card-content>
+
+        <mat-card-actions class="register-actions">
+            <button mat-raised-button color="accent" (click)="file.click()">Upload Photo</button>
+            <button mat-raised-button color="accent" class="bigFont" [disabled]="!registerForm.valid" (click)="addNewPet()">Add Pet</button>
+        </mat-card-actions>
+    </form>
+</mat-card>

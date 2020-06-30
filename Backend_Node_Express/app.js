@@ -3,9 +3,11 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var cors = require('cors')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/userRoutes');
+var postRoutes = require('./routes/postRoutes');
 
 var app = express();
 
@@ -18,10 +20,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors())
+
 
 app.use('/', indexRouter);
 
 app.use('/users', usersRouter);
+app.use('/posts', postRoutes);
+
 
 //Update by Abdulrhman 15-03-2020
 // app.use('/signup', usersRouter);

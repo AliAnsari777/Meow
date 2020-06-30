@@ -1,0 +1,10 @@
+<h1 mat-dialog-title class="font-color">{{data.title}}</h1>
+<div mat-dialog-content class="font-color">
+    <!-- we use data that comes form interface and it will help use to set dynamic message for every dialog box -->
+    <p>{{data.message}}</p>
+</div>
+
+<div mat-dialog-actions>
+    <button mat-button color="accent" (click)="onNoClick()">No</button>
+    <button mat-raised-button color="accent" [mat-dialog-close]="data.id" cdkFocusInitial>Yes</button>
+</div>

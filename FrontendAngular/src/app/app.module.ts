@@ -4,7 +4,8 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 //import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -19,6 +20,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import {MatDialogModule} from '@angular/material/dialog';
+
+
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,7 +35,25 @@ import { RegisterComponent } from './register/register.component';
 import { ServicesComponent } from './services/services.component';
 import { ResetComponent } from './reset/reset.component';
 
+import { HttpClientModule } from '@angular/common/http';
 
+import { AddPetComponent } from './add-pet/add-pet.component'; 
+import { MyPostsComponent } from './my-posts/my-posts.component'; 
+import { AddpostComponent } from './addpost/addpost.component';
+
+import {MatRadioModule} from '@angular/material/radio';
+import {MatNativeDateModule} from '@angular/material/core'
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ViewpostsComponent } from './viewposts/viewposts.component';
+
+import { HomeComponent } from './home/home.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { authInterceptorProviders } from '../services/http-token-interceptor.service';
+
+import { UserpetsComponent } from './userpets/userpets.component';
+import { ConfirmMessageDialogComponent } from './confirm-message-dialog/confirm-message-dialog.component';
+import { UpdatePrfileComponent } from './update-prfile/update-prfile.component';
+import { InterstedDetailsComponent } from './intersted-details/intersted-details.component';
 
 
 @NgModule({
@@ -37,7 +62,17 @@ import { ResetComponent } from './reset/reset.component';
     LoginComponent,
     RegisterComponent,
     ServicesComponent,
-    ResetComponent
+    ResetComponent,
+    AddPetComponent,
+    MyPostsComponent,
+    AddpostComponent,
+    ViewpostsComponent,
+    HomeComponent,
+    PagenotfoundComponent,
+    UserpetsComponent,
+    ConfirmMessageDialogComponent,
+    UpdatePrfileComponent,
+    InterstedDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -58,9 +93,17 @@ import { ResetComponent } from './reset/reset.component';
     MatDividerModule,
     MatSlideToggleModule,
     MatSelectModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    HttpClientModule,
+    MatSidenavModule,
+    MatListModule,
+    MatDatepickerModule,
+    MatRadioModule,
+    MatNativeDateModule,
+    MatSnackBarModule,
+    MatDialogModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
